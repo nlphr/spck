@@ -1,6 +1,6 @@
-
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, setDoc, doc } from "firebase/firestore";
+import { db } from "./firebase-config.js"; // Adjust the import path as necessary
 
 const cpuData = [
   {
@@ -12,8 +12,9 @@ const cpuData = [
     TPD: "65W",
     rating: 3.8,
     price: 110,
-    description: "Sample description for CPU model 1. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu1.jpg"
+    description:
+      "Sample description for CPU model 1. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu1.jpg",
   },
   {
     id: "cpu002",
@@ -24,8 +25,9 @@ const cpuData = [
     TPD: "80W",
     rating: 4.1,
     price: 120,
-    description: "Sample description for CPU model 2. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu2.jpg"
+    description:
+      "Sample description for CPU model 2. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu2.jpg",
   },
   {
     id: "cpu003",
@@ -36,8 +38,9 @@ const cpuData = [
     TPD: "95W",
     rating: 4.4,
     price: 130,
-    description: "Sample description for CPU model 3. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu3.jpg"
+    description:
+      "Sample description for CPU model 3. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu3.jpg",
   },
   {
     id: "cpu004",
@@ -48,8 +51,9 @@ const cpuData = [
     TPD: "110W",
     rating: 4.7,
     price: 140,
-    description: "Sample description for CPU model 4. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu4.jpg"
+    description:
+      "Sample description for CPU model 4. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu4.jpg",
   },
   {
     id: "cpu005",
@@ -60,8 +64,9 @@ const cpuData = [
     TPD: "125W",
     rating: 3.5,
     price: 150,
-    description: "Sample description for CPU model 5. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu5.jpg"
+    description:
+      "Sample description for CPU model 5. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu5.jpg",
   },
   {
     id: "cpu006",
@@ -72,8 +77,9 @@ const cpuData = [
     TPD: "50W",
     rating: 3.8,
     price: 160,
-    description: "Sample description for CPU model 6. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu6.jpg"
+    description:
+      "Sample description for CPU model 6. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu6.jpg",
   },
   {
     id: "cpu007",
@@ -84,8 +90,9 @@ const cpuData = [
     TPD: "65W",
     rating: 4.1,
     price: 170,
-    description: "Sample description for CPU model 7. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu7.jpg"
+    description:
+      "Sample description for CPU model 7. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu7.jpg",
   },
   {
     id: "cpu008",
@@ -96,8 +103,9 @@ const cpuData = [
     TPD: "80W",
     rating: 4.4,
     price: 180,
-    description: "Sample description for CPU model 8. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu8.jpg"
+    description:
+      "Sample description for CPU model 8. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu8.jpg",
   },
   {
     id: "cpu009",
@@ -108,8 +116,9 @@ const cpuData = [
     TPD: "95W",
     rating: 4.7,
     price: 190,
-    description: "Sample description for CPU model 9. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu9.jpg"
+    description:
+      "Sample description for CPU model 9. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu9.jpg",
   },
   {
     id: "cpu010",
@@ -120,8 +129,9 @@ const cpuData = [
     TPD: "110W",
     rating: 3.5,
     price: 200,
-    description: "Sample description for CPU model 10. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu10.jpg"
+    description:
+      "Sample description for CPU model 10. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu10.jpg",
   },
   {
     id: "cpu011",
@@ -132,8 +142,9 @@ const cpuData = [
     TPD: "125W",
     rating: 3.8,
     price: 210,
-    description: "Sample description for CPU model 11. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu11.jpg"
+    description:
+      "Sample description for CPU model 11. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu11.jpg",
   },
   {
     id: "cpu012",
@@ -144,8 +155,9 @@ const cpuData = [
     TPD: "50W",
     rating: 4.1,
     price: 220,
-    description: "Sample description for CPU model 12. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu12.jpg"
+    description:
+      "Sample description for CPU model 12. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu12.jpg",
   },
   {
     id: "cpu013",
@@ -156,8 +168,9 @@ const cpuData = [
     TPD: "65W",
     rating: 4.4,
     price: 230,
-    description: "Sample description for CPU model 13. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu13.jpg"
+    description:
+      "Sample description for CPU model 13. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu13.jpg",
   },
   {
     id: "cpu014",
@@ -168,8 +181,9 @@ const cpuData = [
     TPD: "80W",
     rating: 4.7,
     price: 240,
-    description: "Sample description for CPU model 14. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu14.jpg"
+    description:
+      "Sample description for CPU model 14. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu14.jpg",
   },
   {
     id: "cpu015",
@@ -180,8 +194,9 @@ const cpuData = [
     TPD: "95W",
     rating: 3.5,
     price: 250,
-    description: "Sample description for CPU model 15. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu15.jpg"
+    description:
+      "Sample description for CPU model 15. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu15.jpg",
   },
   {
     id: "cpu016",
@@ -192,8 +207,9 @@ const cpuData = [
     TPD: "110W",
     rating: 3.8,
     price: 260,
-    description: "Sample description for CPU model 16. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu16.jpg"
+    description:
+      "Sample description for CPU model 16. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu16.jpg",
   },
   {
     id: "cpu017",
@@ -204,8 +220,9 @@ const cpuData = [
     TPD: "125W",
     rating: 4.1,
     price: 270,
-    description: "Sample description for CPU model 17. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu17.jpg"
+    description:
+      "Sample description for CPU model 17. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu17.jpg",
   },
   {
     id: "cpu018",
@@ -216,8 +233,9 @@ const cpuData = [
     TPD: "50W",
     rating: 4.4,
     price: 280,
-    description: "Sample description for CPU model 18. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu18.jpg"
+    description:
+      "Sample description for CPU model 18. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu18.jpg",
   },
   {
     id: "cpu019",
@@ -228,8 +246,9 @@ const cpuData = [
     TPD: "65W",
     rating: 4.7,
     price: 290,
-    description: "Sample description for CPU model 19. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu19.jpg"
+    description:
+      "Sample description for CPU model 19. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu19.jpg",
   },
   {
     id: "cpu020",
@@ -240,8 +259,9 @@ const cpuData = [
     TPD: "80W",
     rating: 3.5,
     price: 300,
-    description: "Sample description for CPU model 20. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu20.jpg"
+    description:
+      "Sample description for CPU model 20. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu20.jpg",
   },
   {
     id: "cpu021",
@@ -252,8 +272,9 @@ const cpuData = [
     TPD: "95W",
     rating: 3.8,
     price: 310,
-    description: "Sample description for CPU model 21. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu21.jpg"
+    description:
+      "Sample description for CPU model 21. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu21.jpg",
   },
   {
     id: "cpu022",
@@ -264,8 +285,9 @@ const cpuData = [
     TPD: "110W",
     rating: 4.1,
     price: 320,
-    description: "Sample description for CPU model 22. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu22.jpg"
+    description:
+      "Sample description for CPU model 22. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu22.jpg",
   },
   {
     id: "cpu023",
@@ -276,8 +298,9 @@ const cpuData = [
     TPD: "125W",
     rating: 4.4,
     price: 330,
-    description: "Sample description for CPU model 23. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu23.jpg"
+    description:
+      "Sample description for CPU model 23. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu23.jpg",
   },
   {
     id: "cpu024",
@@ -288,8 +311,9 @@ const cpuData = [
     TPD: "50W",
     rating: 4.7,
     price: 340,
-    description: "Sample description for CPU model 24. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu24.jpg"
+    description:
+      "Sample description for CPU model 24. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu24.jpg",
   },
   {
     id: "cpu025",
@@ -300,8 +324,9 @@ const cpuData = [
     TPD: "65W",
     rating: 3.5,
     price: 350,
-    description: "Sample description for CPU model 25. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu25.jpg"
+    description:
+      "Sample description for CPU model 25. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu25.jpg",
   },
   {
     id: "cpu026",
@@ -312,8 +337,9 @@ const cpuData = [
     TPD: "80W",
     rating: 3.8,
     price: 360,
-    description: "Sample description for CPU model 26. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu26.jpg"
+    description:
+      "Sample description for CPU model 26. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu26.jpg",
   },
   {
     id: "cpu027",
@@ -324,8 +350,9 @@ const cpuData = [
     TPD: "95W",
     rating: 4.1,
     price: 370,
-    description: "Sample description for CPU model 27. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu27.jpg"
+    description:
+      "Sample description for CPU model 27. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu27.jpg",
   },
   {
     id: "cpu028",
@@ -336,8 +363,9 @@ const cpuData = [
     TPD: "110W",
     rating: 4.4,
     price: 380,
-    description: "Sample description for CPU model 28. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu28.jpg"
+    description:
+      "Sample description for CPU model 28. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu28.jpg",
   },
   {
     id: "cpu029",
@@ -348,8 +376,9 @@ const cpuData = [
     TPD: "125W",
     rating: 4.7,
     price: 390,
-    description: "Sample description for CPU model 29. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu29.jpg"
+    description:
+      "Sample description for CPU model 29. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu29.jpg",
   },
   {
     id: "cpu030",
@@ -360,25 +389,35 @@ const cpuData = [
     TPD: "50W",
     rating: 3.5,
     price: 400,
-    description: "Sample description for CPU model 30. Great for gaming and productivity.",
-    imageUrl: "https://example.com/cpu30.jpg"
+    description:
+      "Sample description for CPU model 30. Great for gaming and productivity.",
+    imageUrl: "https://example.com/cpu30.jpg",
   },
-
 ];
 
-async function uploadCPUData() {
-  const sparePartsRef = collection(db, "SparePart");
+// async function uploadCPUData() {
+//   const sparePartsRef = collection(db, "SparePart");
 
-  for (let cpu of cpuData) {
-    try {
-      await setDoc(doc(sparePartsRef, cpu.id), cpu);
-      console.log(`✅ Uploaded: ${cpu.title}`);
-    } catch (err) {
-      console.error(`❌ Failed to upload ${cpu.title}:`, err);
-    }
+//   for (let cpu of cpuData) {
+//     try {
+//       await setDoc(doc(sparePartsRef, cpu.id), cpu);
+//       console.log(`✅ Uploaded: ${cpu.title}`);
+//     } catch (err) {
+//       console.error(`❌ Failed to upload ${cpu.title}:`, err);
+//     }
+//   }
+
+//   console.log("🎉 All CPU data uploaded!");
+// }
+
+// uploadCPUData();
+
+
+for (let cpu of cpuData) {
+  try {
+    await setDoc(doc(db, "cpuData", cpu.id), cpu);
+    console.log(`✅ Uploaded: ${cpu.title}`);
+  } catch (err) {
+    console.error(`❌ Failed to upload ${cpu.title}:`, err);
   }
-
-  console.log("🎉 All CPU data uploaded!");
 }
-
-uploadCPUData();
