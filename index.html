@@ -1,30 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | proc-1</title>
+  <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
-    
+  <div class="auth-card">
+    <form id="login-form" class="form active">
+      <h2>Login</h2>
+      <div class="input-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit">Login</button>
+      <p class="switch-link">Don't have an account? <a href="#" id="show-register">Register</a></p>
+    </form>
+    <form id="register-form" class="form">
+      <h2>Register</h2>
+      <div class="input-group">
+        <label for="register-email">Email</label>
+        <input type="email" id="register-email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-group">
+        <label for="register-password">Password</label>
+        <input type="password" id="register-password" placeholder="Create a password" required>
+      </div>
+      <div class="input-group">
+        <label for="register-confirm">Confirm Password</label>
+        <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+      </div>
+      <button type="submit">Register</button>
+      <p class="switch-link">Already have an account? <a href="#" id="show-login">Login</a></p>
+    </form>
+  </div>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAWZWmD3CUwhlQ1rPC0zAYiFjW0jZX1lF8",
+      authDomain: "pcpart-service.firebaseapp.com",
+      projectId: "pcpart-service",
+      storageBucket: "pcpart-service.firebasestorage.app",
+      messagingSenderId: "607350512305",
+      appId: "1:607350512305:web:b47f26ccf3a405c3856090"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 </body>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAWZWmD3CUwhlQ1rPC0zAYiFjW0jZX1lF8",
-    authDomain: "pcpart-service.firebaseapp.com",
-    projectId: "pcpart-service",
-    storageBucket: "pcpart-service.firebasestorage.app",
-    messagingSenderId: "607350512305",
-    appId: "1:607350512305:web:b47f26ccf3a405c3856090"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
-</html>
+</html> 
