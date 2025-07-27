@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="src/css/styles.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-card">
+    <form id="register-form" class="form active">
+      <h2>Register</h2>
+      <div class="input-group">
+        <label for="register-email">Email</label>
+        <input type="email" id="register-email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-group">
+        <label for="register-password">Password</label>
+        <input type="password" id="register-password" placeholder="Create a password" required>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="show-password">
+          <label class="form-check-label" for="show-password">Show Password</label>
+      </div>
+      </div>
+      <p id="register-message" class="text-success"></p>
+      <button type="submit">Register</button>
+      <p class="switch-link">Already have an account? <a href="login.html">Login</a></p>
+    </form>
+  </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAWZWmD3CUwhlQ1rPC0zAYiFjW0jZX1lF8",
+    authDomain: "pcpart-service.firebaseapp.com",
+    projectId: "pcpart-service",
+    storageBucket: "pcpart-service.firebasestorage.app",
+    messagingSenderId: "607350512305",
+    appId: "1:607350512305:web:b47f26ccf3a405c3856090"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+  <script type="module" src="src/js/register.js"></script>
+</body>
+</html> 
