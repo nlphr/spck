@@ -21,4 +21,4 @@ const db = getFirestore(app);
 
 // Initialize Cloud Storage and get a reference to the service
 // const storage = firebase.storage();
-export { db };
+export { db, auth };
