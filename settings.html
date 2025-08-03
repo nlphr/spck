@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - PCParts&Service</title>
+    <link rel="stylesheet" href="./src/css/all.min.css" />
+    <link rel="stylesheet" href="./src/css/navbar.css" />
+    <link rel="stylesheet" href="./src/css/productCPU.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      .settings-content {
+        padding: var(--spacing-3xl) 0;
+        background: var(--secondary-black);
+        min-height: 70vh;
+      }
+      
+      .settings-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: var(--spacing-2xl);
+        align-items: start;
+      }
+      
+      .settings-sidebar {
+        position: sticky;
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xl);
+      }
+      
+      .settings-nav {
+        background: var(--tertiary-black);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      
+      .settings-nav h3 {
+        color: var(--white);
+        margin-bottom: var(--spacing-lg);
+        font-size: 1.2rem;
+      }
+      
+      .nav-item {
+        display: block;
+        padding: var(--spacing-md);
+        color: var(--light-gray);
+        text-decoration: none;
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--spacing-sm);
+        transition: var(--transition-fast);
+        cursor: pointer;
+      }
+      
+      .nav-item:hover,
+      .nav-item.active {
+        background: rgba(139, 92, 246, 0.1);
+        color: var(--accent-purple);
+      }
+      
+      .settings-main {
+        background: var(--tertiary-black);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      
+      .settings-section {
+        margin-bottom: var(--spacing-3xl);
+      }
+      
+      .settings-section:last-child {
+        margin-bottom: 0;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+        color: var(--white);
+        margin-bottom: var(--spacing-xl);
+        padding-bottom: var(--spacing-md);
+        border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      }
+      
+      .setting-item {
+        margin-bottom: var(--spacing-xl);
+        padding: var(--spacing-lg);
+        background: var(--secondary-black);
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(139, 92, 246, 0.1);
+      }
+      
+      .setting-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .setting-title {
+        font-size: 1.1rem;
+        color: var(--white);
+        font-weight: 600;
+      }
+      
+      .setting-description {
+        color: var(--light-gray);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      
+      .toggle-switch {
+        position: relative;
+        width: 50px;
+        height: 24px;
+        background: var(--tertiary-black);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: var(--transition-fast);
+      }
+      
+      .toggle-switch.active {
+        background: var(--primary-purple);
+      }
+      
+      .toggle-switch::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        background: var(--white);
+        border-radius: 50%;
+        transition: var(--transition-fast);
+      }
+      
+      .toggle-switch.active::after {
+        left: 28px;
+      }
+      
+      .color-picker {
+        display: flex;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-md);
+      }
+      
+      .color-option {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: var(--transition-fast);
+      }
+      
+      .color-option:hover,
+      .color-option.active {
+        border-color: var(--white);
+        transform: scale(1.1);
+      }
+      
+      .color-purple { background: var(--primary-purple); }
+      .color-blue { background: #3b82f6; }
+      .color-green { background: #10b981; }
+      .color-red { background: #ef4444; }
+      .color-orange { background: #f97316; }
+      
+      .select-dropdown {
+        background: var(--secondary-black);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: var(--radius-sm);
+        padding: var(--spacing-sm) var(--spacing-md);
+        color: var(--white);
+        font-size: 0.9rem;
+        width: 200px;
+      }
+      
+      .select-dropdown:focus {
+        outline: none;
+        border-color: var(--primary-purple);
+      }
+      
+      .save-btn {
+        background: var(--gradient-primary);
+        color: var(--white);
+        border: none;
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition-normal);
+        margin-top: var(--spacing-lg);
+      }
+      
+      .save-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-glow);
+      }
+      
+      .terms-content {
+        background: var(--secondary-black);
+        border-radius: var(--radius-md);
+        padding: var(--spacing-xl);
+        border: 1px solid rgba(139, 92, 246, 0.1);
+        max-height: 400px;
+        overflow-y: auto;
+        margin-bottom: var(--spacing-lg);
+      }
+      
+      .terms-content h4 {
+        color: var(--white);
+        margin-bottom: var(--spacing-md);
+        font-size: 1.1rem;
+      }
+      
+      .terms-content p {
+        color: var(--light-gray);
+        margin-bottom: var(--spacing-md);
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+      
+      .terms-content ul {
+        color: var(--light-gray);
+        margin-bottom: var(--spacing-md);
+        padding-left: var(--spacing-lg);
+      }
+      
+      .terms-content li {
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.5;
+      }
+      
+      @media (max-width: 1024px) {
+        .settings-layout {
+          grid-template-columns: 1fr;
+          gap: var(--spacing-xl);
+        }
+        
+        .settings-sidebar {
+          position: static;
+          order: 2;
+        }
+        
+        .settings-main {
+          order: 1;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .setting-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--spacing-md);
+        }
+        
+        .color-picker {
+          flex-wrap: wrap;
+        }
+        
+        .select-dropdown {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">PCParts&Service</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Builder</a>
+          </li>
+          <li class="nav-item">
+            <a href="products.html" class="nav-link">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Guides</a>
+          </li>
+          <li class="nav-item">
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Support</a>
+          </li>
+        </ul>
+        <div class="nav-extras">
+          <a href="#" class="nav-link">Login</a>
+          <a href="#" class="nav-link">Register</a>
+          <a href="settings.html" class="nav-link active">Settings</a>
+        </div>
+        <div class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <div class="hero-grid"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-line">USER</span>
+          <span class="title-line highlight">SETTINGS</span>
+        </h1>
+        <p class="hero-subtitle">
+          Customize your experience and manage your preferences
+        </p>
+      </div>
+    </section>
+
+    <!-- Settings Content -->
+    <section class="settings-content">
+      <div class="container">
+        <div class="settings-layout">
+          <!-- Settings Sidebar -->
+          <aside class="settings-sidebar">
+            <div class="settings-nav">
+              <h3>Settings Menu</h3>
+              <a href="#appearance" class="nav-item active">Appearance</a>
+              <a href="#notifications" class="nav-item">Notifications</a>
+              <a href="#privacy" class="nav-item">Privacy & Security</a>
+              <a href="#account" class="nav-item">Account</a>
+              <a href="#terms" class="nav-item">Terms of Service</a>
+            </div>
+          </aside>
+
+          <!-- Main Settings Area -->
+          <main class="settings-main">
+            <!-- Appearance Settings -->
+            <div class="settings-section" id="appearance">
+              <h2 class="section-title">Appearance</h2>
+              
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Dark Mode</div>
+                    <div class="setting-description">Use dark theme for better eye comfort</div>
+                  </div>
+                  <div class="toggle-switch active"></div>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Accent Color</div>
+                    <div class="setting-description">Choose your preferred accent color</div>
+                  </div>
+                </div>
+                <div class="color-picker">
+                  <div class="color-option color-purple active"></div>
+                  <div class="color-option color-blue"></div>
+                  <div class="color-option color-green"></div>
+                  <div class="color-option color-red"></div>
+                  <div class="color-option color-orange"></div>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Font Size</div>
+                    <div class="setting-description">Adjust the text size for better readability</div>
+                  </div>
+                </div>
+                <select class="select-dropdown">
+                  <option value="small">Small</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-section" id="notifications">
+              <h2 class="section-title">Notifications</h2>
+              
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Email Notifications</div>
+                    <div class="setting-description">Receive updates about your orders and promotions</div>
+                  </div>
+                  <div class="toggle-switch active"></div>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Price Alerts</div>
+                    <div class="setting-description">Get notified when product prices drop</div>
+                  </div>
+                  <div class="toggle-switch"></div>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">New Product Alerts</div>
+                    <div class="setting-description">Stay updated with the latest components</div>
+                  </div>
+                  <div class="toggle-switch active"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Privacy & Security Settings -->
+            <div class="settings-section" id="privacy">
+              <h2 class="section-title">Privacy & Security</h2>
+              
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Data Collection</div>
+                    <div class="setting-description">Allow us to collect usage data to improve your experience</div>
+                  </div>
+                  <div class="toggle-switch active"></div>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Two-Factor Authentication</div>
+                    <div class="setting-description">Add an extra layer of security to your account</div>
+                  </div>
+                  <div class="toggle-switch"></div>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Public Profile</div>
+                    <div class="setting-description">Allow other users to see your builds and reviews</div>
+                  </div>
+                  <div class="toggle-switch active"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Account Settings -->
+            <div class="settings-section" id="account">
+              <h2 class="section-title">Account</h2>
+              
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Language</div>
+                    <div class="setting-description">Choose your preferred language</div>
+                  </div>
+                </div>
+                <select class="select-dropdown">
+                  <option value="en" selected>English</option>
+                  <option value="es">Spanish</option>
+                  <option value="fr">French</option>
+                  <option value="de">German</option>
+                </select>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Currency</div>
+                    <div class="setting-description">Select your preferred currency for pricing</div>
+                  </div>
+                </div>
+                <select class="select-dropdown">
+                  <option value="usd" selected>USD ($)</option>
+                  <option value="eur">EUR (€)</option>
+                  <option value="gbp">GBP (£)</option>
+                  <option value="cad">CAD (C$)</option>
+                </select>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Auto-Save Builds</div>
+                    <div class="setting-description">Automatically save your PC builds as you create them</div>
+                  </div>
+                  <div class="toggle-switch active"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terms of Service -->
+            <div class="settings-section" id="terms">
+              <h2 class="section-title">Terms of Service</h2>
+              
+              <div class="terms-content">
+                <h4>1. Acceptance of Terms</h4>
+                <p>By accessing and using PCParts&Service, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h4>2. Use License</h4>
+                <p>Permission is granted to temporarily download one copy of the materials (information or software) on PCParts&Service for personal, non-commercial transitory viewing only.</p>
+                
+                <h4>3. Disclaimer</h4>
+                <p>The materials on PCParts&Service are provided on an 'as is' basis. PCParts&Service makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                
+                <h4>4. Limitations</h4>
+                <p>In no event shall PCParts&Service or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on PCParts&Service, even if PCParts&Service or a PCParts&Service authorized representative has been notified orally or in writing of the possibility of such damage.</p>
+                
+                <h4>5. Accuracy of Materials</h4>
+                <p>The materials appearing on PCParts&Service could include technical, typographical, or photographic errors. PCParts&Service does not warrant that any of the materials on its website are accurate, complete or current.</p>
+                
+                <h4>6. Links</h4>
+                <p>PCParts&Service has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by PCParts&Service of the site.</p>
+                
+                <h4>7. Modifications</h4>
+                <p>PCParts&Service may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these Terms of Service.</p>
+                
+                <h4>8. Governing Law</h4>
+                <p>These terms and conditions are governed by and construed in accordance with the laws and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-header">
+                  <div>
+                    <div class="setting-title">Accept Terms of Service</div>
+                    <div class="setting-description">I have read and agree to the Terms of Service</div>
+                  </div>
+                  <div class="toggle-switch active"></div>
+                </div>
+              </div>
+            </div>
+
+            <button class="save-btn">Save All Settings</button>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">PCParts&Service</h3>
+            <p class="footer-description">
+              Your ultimate destination for premium PC components and building expertise.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="marketplace.html">Marketplace</a></li>
+              <li><a href="#">Build Guide</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Categories</h4>
+            <ul class="footer-links">
+              <li><a href="#">CPUs</a></li>
+              <li><a href="#">GPUs</a></li>
+              <li><a href="#">Motherboards</a></li>
+              <li><a href="#">RAM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 PCParts&Service. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Auth -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+      integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./src/js/firebase-config.js"></script>
+  </body>
+</html> 
