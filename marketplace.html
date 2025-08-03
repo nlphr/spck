@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="./src/css/all.min.css" />
+    <link rel="stylesheet" href="./src/css/navbar.css" />
+    <link rel="stylesheet" href="./src/css/marketplace.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">PCParts&Service</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Builder</a>
+          </li>
+          <li class="nav-item">
+            <a href="products.html" class="nav-link">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Guides</a>
+          </li>
+          <li class="nav-item">
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Support</a>
+          </li>
+        </ul>
+        <div class="nav-extras">
+          <a href="#" class="nav-link">Login</a>
+          <a href="#" class="nav-link">Register</a>
+          <a href="#" class="nav-link">Settings</a>
+        </div>
+        <div class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <div class="hero-grid"></div>
+        <div class="hero-particles"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-title">
+          <span class="title-line">PC</span>
+          <span class="title-line highlight">MARKETPLACE</span>
+        </div>
+        <p class="hero-subtitle">
+          Buy and sell complete gaming PCs with premium components
+        </p>
+        <div class="marketplace-actions">
+          <div class="action-card" onclick="showBuySection()">
+            <div class="action-icon">🛒</div>
+            <h3 class="action-title">Buy PCs</h3>
+            <p class="action-description">Browse complete gaming systems from verified sellers</p>
+          </div>
+          <div class="action-card" onclick="showSellSection()">
+            <div class="action-icon">💰</div>
+            <h3 class="action-title">Sell Your PC</h3>
+            <p class="action-description">List your gaming PC and reach thousands of buyers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+      <div class="container">
+        <div class="content-layout">
+          <!-- Sidebar -->
+          <aside class="sidebar">
+            <!-- Summary Card -->
+            <div class="summary-card">
+              <h3 class="card-title">Marketplace Stats</h3>
+              <div class="summary-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Total PCs</span>
+                  <span class="stat-value" id="totalPCs">0</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Active Sellers</span>
+                  <span class="stat-value" id="activeSellers">0</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Avg Price</span>
+                  <span class="stat-value" id="avgPrice">$0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filters Card -->
+            <div class="filter-card">
+              <h3 class="card-title">Filters</h3>
+              
+              <!-- Price Range -->
+              <div class="filter-section">
+                <h4>Price Range</h4>
+                <div class="price-slider">
+                  <input type="range" class="slider" id="priceSlider" min="0" max="5000" value="5000">
+                  <div class="price-range">
+                    <span>$0</span>
+                    <span id="priceValue">$5000</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Component Filters -->
+              <div class="component-filters">
+                <div class="component-section">
+                  <h4 class="component-title">
+                    <span class="component-icon">CPU</span>
+                    CPU Brand
+                  </h4>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="intel">
+                    <span class="checkmark"></span>
+                    Intel
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="amd">
+                    <span class="checkmark"></span>
+                    AMD
+                  </label>
+                </div>
+
+                <div class="component-section">
+                  <h4 class="component-title">
+                    <span class="component-icon">GPU</span>
+                    GPU Brand
+                  </h4>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="nvidia">
+                    <span class="checkmark"></span>
+                    NVIDIA
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="amd">
+                    <span class="checkmark"></span>
+                    AMD
+                  </label>
+                </div>
+
+                <div class="component-section">
+                  <h4 class="component-title">
+                    <span class="component-icon">RAM</span>
+                    RAM Capacity
+                  </h4>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="8gb">
+                    <span class="checkmark"></span>
+                    8GB
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="16gb">
+                    <span class="checkmark"></span>
+                    16GB
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="32gb">
+                    <span class="checkmark"></span>
+                    32GB+
+                  </label>
+                </div>
+
+                <div class="component-section">
+                  <h4 class="component-title">
+                    <span class="component-icon">SSD</span>
+                    Storage Type
+                  </h4>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="ssd">
+                    <span class="checkmark"></span>
+                    SSD
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" value="nvme">
+                    <span class="checkmark"></span>
+                    NVMe
+                  </label>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Product Area -->
+          <main class="product-area">
+            <!-- Product Header -->
+            <div class="product-header">
+              <div class="header-left">
+                <h2 class="product-count" id="productCount">0 PCs Found</h2>
+                <div class="header-actions">
+                  <button class="action-btn" onclick="clearFilters()">Clear Filters</button>
+                  <button class="action-btn" onclick="refreshListings()">Refresh</button>
+                </div>
+              </div>
+              <div class="header-right">
+                <div class="search-section">
+                  <input type="text" class="search-input" id="searchInput" placeholder="Search PCs...">
+                  <span class="login-prompt">Login to save favorites</span>
+                </div>
+                <button class="add-filter-btn" onclick="addCustomFilter()">Add Filter</button>
+              </div>
+            </div>
+
+            <!-- Sorting Section -->
+            <div class="sorting-section">
+              <div class="sort-options">
+                <button class="sort-btn active" data-sort="newest">Newest</button>
+                <button class="sort-btn" data-sort="price-low">Price: Low to High</button>
+                <button class="sort-btn" data-sort="price-high">Price: High to Low</button>
+                <button class="sort-btn" data-sort="rating">Best Rated</button>
+              </div>
+            </div>
+
+            <!-- PC Listings -->
+            <div class="pc-listings" id="pcListings">
+              <!-- PC listings will be populated by JavaScript -->
+            </div>
+
+            <!-- Empty State (shown when no PCs) -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+              <div class="empty-icon">💻</div>
+              <h3 class="empty-title">No PCs Found</h3>
+              <p class="empty-description">
+                Try adjusting your filters or check back later for new listings.
+              </p>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div>
+            <h3 class="footer-title">SPCK Marketplace</h3>
+            <p class="footer-description">
+              The premier destination for buying and selling complete gaming PCs. 
+              Connect with verified sellers and find your perfect gaming setup.
+            </p>
+          </div>
+          <div>
+            <h4 class="footer-subtitle">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="products.html">Products</a></li>
+              <li><a href="marketplace.html">Marketplace</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-subtitle">Support</h4>
+            <ul class="footer-links">
+              <li><a href="#">How to Sell</a></li>
+              <li><a href="#">Buyer Guide</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 SPCK Marketplace. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript for basic functionality -->
+    <script>
+      // Price slider functionality
+      const priceSlider = document.getElementById('priceSlider');
+      const priceValue = document.getElementById('priceValue');
+      
+      priceSlider.addEventListener('input', function() {
+        priceValue.textContent = '$' + this.value;
+        // Add filter logic here
+      });
+
+      // Sort button functionality
+      const sortButtons = document.querySelectorAll('.sort-btn');
+      sortButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          sortButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          // Add sorting logic here
+        });
+      });
+
+      // Search functionality
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', function() {
+        // Add search logic here
+      });
+
+      // Placeholder functions for marketplace actions
+      function showBuySection() {
+        // Logic to show buy section
+        console.log('Show buy section');
+      }
+
+      function showSellSection() {
+        // Logic to show sell section
+        console.log('Show sell section');
+      }
+
+      function clearFilters() {
+        // Logic to clear all filters
+        console.log('Clear filters');
+      }
+
+      function refreshListings() {
+        // Logic to refresh listings
+        console.log('Refresh listings');
+      }
+
+      function addCustomFilter() {
+        // Logic to add custom filter
+        console.log('Add custom filter');
+      }
+
+      // Mobile navigation toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+
+      navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+      });
+
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    </script>
+  </body>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <!-- Firebase Auth -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+    integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script type="module" src="./src/js/firebase-config.js"></script>
+</html>

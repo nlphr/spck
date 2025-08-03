@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPU Products - PCParts&Service</title>
+    <link rel="stylesheet" href="./src/css/all.min.css" />
+    <link rel="stylesheet" href="./src/css/navbar.css" />
+    <link rel="stylesheet" href="./src/css/productCPU.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">PCParts&Service</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Builder</a>
+          </li>
+          <li class="nav-item">
+            <a href="products.html" class="nav-link">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Guides</a>
+          </li>
+          <li class="nav-item">
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Support</a>
+          </li>
+        </ul>
+        <div class="nav-extras">
+          <a href="#" class="nav-link">Login</a>
+          <a href="#" class="nav-link">Register</a>
+          <a href="#" class="nav-link">Settings</a>
+        </div>
+        <div class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <div class="hero-grid"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-line">CHOOSE A</span>
+          <span class="title-line highlight">CPU</span>
+        </h1>
+        <p class="hero-subtitle">
+          Select the perfect processor for your build
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+      <div class="container">
+        <div class="content-layout">
+          <!-- Left Sidebar -->
+          <aside class="sidebar">
+            <!-- Part List Summary -->
+            <div class="summary-card">
+              <h3 class="card-title">Part List</h3>
+              <div class="compatibility-filter">
+                <label class="checkbox-label">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  Compatibility Filter
+                </label>
+              </div>
+              <div class="summary-stats">
+                <div class="stat-item">
+                  <span class="stat-label">PARTS:</span>
+                  <span class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">TOTAL:</span>
+                  <span class="stat-value">$0.00</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">ESTIMATED WATTAGE:</span>
+                  <span class="stat-value">0W</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Merchants & Pricing -->
+            <div class="filter-card">
+              <h3 class="card-title">Merchants / Pricing</h3>
+              <div class="merchants-section">
+                <div class="section-header">
+                  <h4>MERCHANTS</h4>
+                  <button class="add-btn">+</button>
+                </div>
+              </div>
+              <div class="pricing-options">
+                <h4>PRICING OPTIONS</h4>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  Include mail-in rebates
+                </label>
+              </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-card">
+              <h3 class="card-title">Filters</h3>
+              
+              <!-- Price Filter -->
+              <div class="filter-section">
+                <h4>PRICE</h4>
+                <div class="price-slider">
+                  <input type="range" min="0" max="2699" value="2699" class="slider">
+                  <div class="price-range">
+                    <span>$0</span>
+                    <span>$2699</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Rating Filter -->
+              <div class="filter-section">
+                <h4>RATING</h4>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  3 Stars & Up
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                  4 Stars & Up
+                </label>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Product Area -->
+          <main class="product-area">
+            <!-- Header -->
+            <div class="product-header">
+              <div class="header-left">
+                <h2 class="product-count">0 Compatible Products</h2>
+                <div class="header-actions">
+                  <button class="action-btn">Select All</button>
+                  <button class="action-btn">Select None</button>
+                  <button class="action-btn">Compare Selected</button>
+                </div>
+              </div>
+              <div class="header-right">
+                <div class="search-section">
+                  <input type="text" placeholder="Search CPUs..." class="search-input">
+                  <span class="login-prompt">Log in to set price alerts.</span>
+                </div>
+                <button class="add-filter-btn">Add From Filter</button>
+              </div>
+            </div>
+
+            <!-- Sorting -->
+            <div class="sorting-section">
+              <div class="sort-options">
+                <button class="sort-btn active" data-sort="recent">Recent</button>
+                <button class="sort-btn" data-sort="price">Price</button>
+                <button class="sort-btn" data-sort="rating">Rating</button>
+                <button class="sort-btn" data-sort="core-count">Core Count</button>
+                <button class="sort-btn" data-sort="performance">Performance</button>
+              </div>
+            </div>
+
+            <!-- Product Table -->
+            <div class="product-table">
+              <div class="table-header">
+                <div class="col-name">Name</div>
+                <div class="col-core">Core Count</div>
+                <div class="col-clock">Performance Core Clock</div>
+                <div class="col-arch">Microarchitecture</div>
+                <div class="col-tdp">TDP</div>
+                <div class="col-rating">Rating</div>
+                <div class="col-price">Price</div>
+              </div>
+              
+              <!-- Product List Container (Empty for JS population) -->
+              <div class="product-list" id="cpu-product-list">
+                <!-- Products will be added here via JavaScript -->
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">PCParts&Service</h3>
+            <p class="footer-description">
+              Your ultimate destination for premium PC components and building expertise.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="marketplace.html">Marketplace</a></li>
+              <li><a href="#">Build Guide</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Categories</h4>
+            <ul class="footer-links">
+              <li><a href="#">CPUs</a></li>
+              <li><a href="#">GPUs</a></li>
+              <li><a href="#">Motherboards</a></li>
+              <li><a href="#">RAM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 PCParts&Service. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Auth -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+      integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./src/js/firebase-config.js"></script>
+  </body>
+</html>

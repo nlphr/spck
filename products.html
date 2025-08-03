@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - PCParts&Service</title>
+    <link rel="stylesheet" href="./src/css/all.min.css" />
+    <link rel="stylesheet" href="./src/css/navbar.css" />
+    <link rel="stylesheet" href="./src/css/products.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">PCParts&Service</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Builder</a>
+          </li>
+          <li class="nav-item">
+            <a href="products.html" class="nav-link active">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Guides</a>
+          </li>
+          <li class="nav-item">
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Support</a>
+          </li>
+        </ul>
+        <div class="nav-extras">
+          <a href="#" class="nav-link">Login</a>
+          <a href="#" class="nav-link">Register</a>
+          <a href="#" class="nav-link">Settings</a>
+        </div>
+        <div class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <div class="hero-grid"></div>
+        <div class="hero-particles"></div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-line">PREMIUM</span>
+          <span class="title-line highlight">COMPONENTS</span>
+        </h1>
+        <p class="hero-subtitle">
+          Discover our curated selection of high-performance PC parts
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+      <div class="container">
+        <div class="products-grid">
+          <!-- CPU -->
+          <div class="product-card" data-category="cpu">
+            <div class="product-visual">
+              <div class="product-icon cpu-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">CPU</h3>
+              <p class="product-description">
+                High-performance processors for gaming and professional workloads
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">Gaming</span>
+                <span class="feature-tag">Workstation</span>
+                <span class="feature-tag">Overclocking</span>
+              </div>
+              <a href="productCPU.html" class="product-link">
+                <span class="link-text">Explore CPUs</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- GPU -->
+          <div class="product-card" data-category="gpu">
+            <div class="product-visual">
+              <div class="product-icon gpu-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">GPU</h3>
+              <p class="product-description">
+                Powerful graphics cards for immersive gaming experiences
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">4K Gaming</span>
+                <span class="feature-tag">Ray Tracing</span>
+                <span class="feature-tag">VR Ready</span>
+              </div>
+              <a href="marketplace.html" class="product-link">
+                <span class="link-text">Explore GPUs</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- RAM -->
+          <div class="product-card" data-category="ram">
+            <div class="product-visual">
+              <div class="product-icon ram-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">RAM</h3>
+              <p class="product-description">
+                High-speed memory modules for optimal system performance
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">DDR5</span>
+                <span class="feature-tag">RGB</span>
+                <span class="feature-tag">Low Latency</span>
+              </div>
+              <a href="marketplace.html" class="product-link">
+                <span class="link-text">Explore RAM</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- Storage -->
+          <div class="product-card" data-category="storage">
+            <div class="product-visual">
+              <div class="product-icon storage-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">Storage</h3>
+              <p class="product-description">
+                Lightning-fast SSDs and high-capacity HDDs for all your data needs
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">NVMe</span>
+                <span class="feature-tag">High Capacity</span>
+                <span class="feature-tag">Fast Boot</span>
+              </div>
+              <a href="marketplace.html" class="product-link">
+                <span class="link-text">Explore Storage</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- Mainboard -->
+          <div class="product-card" data-category="mainboard">
+            <div class="product-visual">
+              <div class="product-icon mainboard-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">Mainboard</h3>
+              <p class="product-description">
+                Feature-rich motherboards with advanced connectivity options
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">WiFi 6E</span>
+                <span class="feature-tag">PCIe 5.0</span>
+                <span class="feature-tag">RGB Fusion</span>
+              </div>
+              <a href="marketplace.html" class="product-link">
+                <span class="link-text">Explore Mainboards</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- PSU -->
+          <div class="product-card" data-category="psu">
+            <div class="product-visual">
+              <div class="product-icon psu-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">Power Supply</h3>
+              <p class="product-description">
+                Reliable and efficient power supplies for stable system operation
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">80+ Gold</span>
+                <span class="feature-tag">Modular</span>
+                <span class="feature-tag">Silent</span>
+              </div>
+              <a href="marketplace.html" class="product-link">
+                <span class="link-text">Explore PSUs</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- Case -->
+          <div class="product-card" data-category="case">
+            <div class="product-visual">
+              <div class="product-icon case-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">PC Case</h3>
+              <p class="product-description">
+                Stylish and functional cases with excellent airflow and cable management
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">Tempered Glass</span>
+                <span class="feature-tag">High Airflow</span>
+                <span class="feature-tag">Cable Management</span>
+              </div>
+              <a href="marketplace.html" class="product-link">
+                <span class="link-text">Explore Cases</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <!-- CPU Cooler -->
+          <div class="product-card" data-category="cooler">
+            <div class="product-visual">
+              <div class="product-icon cooler-icon">
+                <div class="icon-glow"></div>
+              </div>
+              <div class="product-particles"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title">CPU Cooler</h3>
+              <p class="product-description">
+                Advanced cooling solutions for optimal thermal performance
+              </p>
+              <div class="product-features">
+                <span class="feature-tag">Liquid Cooling</span>
+                <span class="feature-tag">RGB Fans</span>
+                <span class="feature-tag">Silent</span>
+              </div>
+              <a href="marketplace.html" class="product-link">
+                <span class="link-text">Explore Coolers</span>
+                <div class="link-arrow">→</div>
+              </a>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Why Choose Our Components?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-glow"></div>
+            </div>
+            <h3 class="feature-title">Premium Quality</h3>
+            <p class="feature-description">
+              All components are carefully selected from top-tier manufacturers
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-glow"></div>
+            </div>
+            <h3 class="feature-title">Warranty Protection</h3>
+            <p class="feature-description">
+              Extended warranties and excellent customer support for peace of mind
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-glow"></div>
+            </div>
+            <h3 class="feature-title">Performance Guaranteed</h3>
+            <p class="feature-description">
+              Benchmarked and tested components for optimal performance
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">PCParts&Service</h3>
+            <p class="footer-description">
+              Your ultimate destination for premium PC components and building expertise.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="marketplace.html">Marketplace</a></li>
+              <li><a href="#">Build Guide</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Categories</h4>
+            <ul class="footer-links">
+              <li><a href="#">CPUs</a></li>
+              <li><a href="#">GPUs</a></li>
+              <li><a href="#">Motherboards</a></li>
+              <li><a href="#">RAM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 PCParts&Service. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Auth -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+      integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./src/js/firebase-config.js"></script>
+  </body>
+</html>
