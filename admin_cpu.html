@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./src/css/admin.css" />
+  </head>
+  <body>
+    <div class="mt-4">
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add CPU
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingValue"
+              placeholder="Title"
+            />
+            <label for="floatingValue">CPU Title</label>
+            <input
+              type="text"
+              class="form-control mt-2"
+              id="floatingPrice"
+              placeholder="Price"
+            />
+            <label for="floatingPrice">CPU Price</label>
+          </form>
+        </div>
+      </div>
+
+      <button class="btn btn-warning" id="cpu-edit-btn">Edit CPU</button>
+      <button class="btn btn-danger" id="cpu-delete-btn">Delete CPU</button>
+
+      <h2 class="text-info mt-3">CPU List</h2>
+      <ul class="list-group" id="cpu-list">
+        <!-- CPU list here -->
+        <li></li>
+      </ul>
+    </div>
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <script src="./src/js/firebase-config.js"></script>
+  <script src="./src/js/manageCPU.js"></script>
+  <script>
+    const cpuList = document.getElementById("cpu-list");
+    console.log(cpuList);
+    getCpu(cpuList);
+  </script>
+</html>
