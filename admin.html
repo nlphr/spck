@@ -24,106 +24,7 @@
         Welcome to the admin page. Here you can manage your application
         settings.
       </p>
-      <div class="mt-4">
-        <button class="btn btn-success">Add New User</button>
-        <button class="btn btn-warning">Edit Settings</button>
-        <button class="btn btn-danger">Delete User</button>
-      </div>
-      <div class="mt-4">
-        <h2 class="text-info">User List</h2>
-        <ul class="list-group">
-          <!-- User list here -->
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-success" id="cpu-add-btn">Add CPU</button>
-        <button class="btn btn-warning" id="cpu-edit-btn">Edit CPU</button>
-        <button class="btn btn-danger" id="cpu-delete-btn">Delete CPU</button>
-
-        <h2 class="text-info mt-3">CPU List</h2>
-        <ul class="list-group" id="cpu-list">
-          <!-- CPU list here -->
-          <li>
-            <span class="text-primary">Intel Core i9</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-success">Add GPU</button>
-        <button class="btn btn-warning">Edit GPU</button>
-        <button class="btn btn-danger">Delete GPU</button>
-
-        <h2 class="text-info mt-3">GPU List</h2>
-        <ul class="list-group">
-          <!-- GPU list here -->
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-success">Add RAM</button>
-        <button class="btn btn-warning">Edit RAM</button>
-        <button class="btn btn-danger">Delete RAM</button>
-
-        <h2 class="text-info mt-3">RAM List</h2>
-        <ul class="list-group">
-          <!-- RAM list here -->
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-success">Add Storage</button>
-        <button class="btn btn-warning">Edit Storage</button>
-        <button class="btn btn-danger">Delete Storage</button>
-
-        <h2 class="text-info mt-3">Storage List</h2>
-        <ul class="list-group">
-          <!-- Storage list here -->
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-sucess">Add Mainboard</button>
-        <button class="btn btn-warning">Edit Mainboard</button>
-        <button class="btn btn-danger">Delete Mainboard</button>
-        <h2 class="text-info mt-3">Mainboard List</h2>
-        <ul class="list-group">
-          <!-- Mainboard list here -->
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-success">Add Power Supply</button>
-        <button class="btn btn-warning">Edit Power Supply</button>
-        <button class="btn btn-danger">Delete Power Supply</button>
-
-        <h2 class="text-info mt-3">Power Supply List</h2>
-        <ul class="list-group">
-          <!-- Power Supply list here -->
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-success">Add Case</button>
-        <button class="btn btn-warning">Edit Case</button>
-        <button class="btn btn-danger">Delete Case</button>
-        <h2 class="text-info mt-3">Case List</h2>
-        <ul class="list-group">
-          <!-- Case list here -->
-        </ul>
-      </div>
-
-      <div class="mt-4">
-        <button class="btn btn-success">Add CPU Cooler</button>
-        <button class="btn btn-warning">Edit CPU Cooler</button>
-        <button class="btn btn-danger">Delete CPU Cooler</button>
-
-        <h2 class="text-info mt-3">CPU Cooler List</h2>
-        <ul class="list-group">
-          <!-- CPU Cooler list here -->
-        </ul>
-      </div>
+      
     </div>
   </body>
   <!-- Firebase -->
@@ -137,11 +38,5 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   ></script>
-  <script type="module" src="./src/js/firebase-config.js"></script>
-  <script type="module" src="./src/js/getCPU.js"></script>
-  <script type="module">
-    import { getCpu } from "./src/js/getCPU.js";  
-    const cpuList = document.getElementById("cpu-list");
-    getCpu(cpuList);
-  </script>
+  <script src="./src/js/firebase-config.js"></script>
 </html>
