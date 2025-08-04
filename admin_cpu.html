@@ -31,32 +31,71 @@
       </button>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
-          <form class="form-floating">
+          <form id="cpu-form">
             <input
               type="text"
-              class="form-control"
-              id="floatingValue"
-              placeholder="Title"
+              id="cpu-name"
+              class="form-control mb-2"
+              placeholder="CPU Name"
+              required
             />
-            <label for="floatingValue">CPU Title</label>
+            <input
+              type="number"
+              id="cpu-price"
+              class="form-control mb-2"
+              placeholder="CPU Price"
+              required
+            />
             <input
               type="text"
-              class="form-control mt-2"
-              id="floatingPrice"
-              placeholder="Price"
+              id="cpu-micro-architecture"
+              class="form-control mb-2"
+              placeholder="CPU Micro Architecture"
+              required
             />
-            <label for="floatingPrice">CPU Price</label>
+            <input
+              type="text"
+              id="cpu-tpd"
+              class="form-control mb-2"
+              placeholder="CPU TPD"
+              required
+            />
+            <input
+              type="number"
+              id="cpu-core"
+              class="form-control mb-2"
+              placeholder="CPU Core"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-performance-core-clock"
+              class="form-control mb-2"
+              placeholder="CPU Performance Core Clock"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-description"
+              class="form-control mb-2"
+              placeholder="CPU Description"
+              required
+            />
+            <input type="file" class="form-control mb-2" id="cpu-image" />
+            <input
+              type="button"
+              class="btn btn-primary"
+              id="cpu-submit-btn"
+              value="Confirm"
+              onclick="addCpu()"
+            />
           </form>
         </div>
       </div>
 
-      <button class="btn btn-warning" id="cpu-edit-btn">Edit CPU</button>
-      <button class="btn btn-danger" id="cpu-delete-btn">Delete CPU</button>
-
       <h2 class="text-info mt-3">CPU List</h2>
       <ul class="list-group" id="cpu-list">
         <!-- CPU list here -->
-        <li></li>
       </ul>
     </div>
   </body>
@@ -67,9 +106,4 @@
 
   <script src="./src/js/firebase-config.js"></script>
   <script src="./src/js/manageCPU.js"></script>
-  <script>
-    const cpuList = document.getElementById("cpu-list");
-    console.log(cpuList);
-    getCpu(cpuList);
-  </script>
 </html>
