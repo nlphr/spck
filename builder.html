@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PC Builder - PCParts&Service</title>
+    <link rel="stylesheet" href="./src/css/all.min.css" />
+    <link rel="stylesheet" href="./src/css/navbar.css" />
+    <link rel="stylesheet" href="./src/css/builder.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">PCParts&Service</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="builder.html" class="nav-link active">Builder</a></li>
+          <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="guides.html" class="nav-link">Guides</a></li>
+          <li class="nav-item"><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
+        </ul>
+        <div class="nav-extras">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link">Register</a>
+          <a href="settings.html" class="nav-link">Settings</a>
+        </div>
+        <div class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="builder-hero">
+      <div class="builder-hero-background">
+        <div class="builder-hero-grid"></div>
+        <div class="builder-hero-particles"></div>
+      </div>
+      <div class="builder-hero-content">
+        <h1 class="builder-hero-title">
+          <span class="builder-title-line">BUILD YOUR</span>
+          <span class="builder-title-line highlight">DREAM PC</span>
+        </h1>
+        <p class="builder-hero-subtitle">
+          Select your components to preview your custom build and estimate the total price
+        </p>
+      </div>
+    </section>
+
+    <!-- Builder Container -->
+    <section class="builder-container">
+      <div class="container">
+        <div class="components-section">
+          <div class="components-header">
+            <h2 class="components-title">Select Components</h2>
+            <p class="components-subtitle">Choose from our premium selection of PC parts</p>
+          </div>
+          <div class="components-grid">
+            <!-- CPU Component -->
+            <div class="component-item" data-part="cpu">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">CPU</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">Select a processor that matches your performance needs and budget</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="cpu-select" class="part-select">
+                    <option value="">Select CPU</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="cpu" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- GPU Component -->
+            <div class="component-item" data-part="gpu">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">GPU</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">Choose a graphics card for gaming, content creation, or professional work</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="gpu-select" class="part-select">
+                    <option value="">Select GPU</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="gpu" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Motherboard Component -->
+            <div class="component-item" data-part="mainboard">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">Motherboard</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">The foundation of your build - ensure compatibility with your CPU</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="mainboard-select" class="part-select">
+                    <option value="">Select Motherboard</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="mainboard" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- RAM Component -->
+            <div class="component-item" data-part="ram">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">RAM</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">Memory modules for smooth multitasking and gaming performance</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="ram-select" class="part-select">
+                    <option value="">Select RAM</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="ram" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Storage Component -->
+            <div class="component-item" data-part="storage">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">Storage</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">SSDs and HDDs for fast boot times and ample storage space</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="storage-select" class="part-select">
+                    <option value="">Select Storage</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="storage" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Power Supply Component -->
+            <div class="component-item" data-part="psu">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">Power Supply</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">Reliable power delivery for all your components</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="psu-select" class="part-select">
+                    <option value="">Select Power Supply</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="psu" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Component -->
+            <div class="component-item" data-part="case">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">Case</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">PC cases with excellent airflow and cable management</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="case-select" class="part-select">
+                    <option value="">Select Case</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="case" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CPU Cooler Component -->
+            <div class="component-item" data-part="cooler">
+              <div class="component-header">
+                <div class="component-info">
+                  <div class="component-icon">
+                    <div class="component-icon-glow"></div>
+                  </div>
+                  <div class="component-name">CPU Cooler</div>
+                </div>
+                <div class="component-status not-selected">Not Selected</div>
+              </div>
+              <div class="component-content">
+                <div class="component-details">
+                  <p class="component-description">Keep your CPU running cool with air or liquid cooling</p>
+                  <div class="component-price">$0.00</div>
+                </div>
+                <div class="component-actions">
+                  <select id="cooler-select" class="part-select">
+                    <option value="">Select CPU Cooler</option>
+                    <!-- JS will populate options -->
+                  </select>
+                  <button class="btn-remove" data-part="cooler" style="display:none;">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Build Preview -->
+        <div class="build-preview">
+          <div class="preview-header">
+            <h2 class="preview-title">Your Build Preview</h2>
+            <p class="preview-subtitle">Review your selected components</p>
+          </div>
+          <div class="build-summary">
+            <div class="summary-item">
+              <span class="summary-label">Components Selected</span>
+              <span class="summary-value" id="components-count">0/8</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Build Status</span>
+              <span class="summary-value" id="build-status">Incomplete</span>
+            </div>
+          </div>
+          <div class="total-price">
+            <div class="total-label">Estimated Total</div>
+            <div class="total-amount" id="build-price">$0.00</div>
+          </div>
+          <div class="build-actions">
+            <button class="btn-save-build" id="save-build-btn">Save Build</button>
+            <button class="btn-clear-build" id="clear-build-btn">Clear All</button>
+          </div>
+          <div class="compatibility-warnings" id="compatibility-warnings" style="display:none;">
+            <div class="warnings-title">
+              <span>⚠</span>
+              Compatibility Warnings
+            </div>
+            <div id="warnings-list">
+              <!-- Warnings will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">PCParts&Service</h3>
+            <p class="footer-description">
+              Your ultimate destination for premium PC components and building expertise.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="marketplace.html">Marketplace</a></li>
+              <li><a href="#">Build Guide</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Categories</h4>
+            <ul class="footer-links">
+              <li><a href="productCPU.html">CPUs</a></li>
+              <li><a href="productGPU.html">GPUs</a></li>
+              <li><a href="productMainBoard.html">Motherboards</a></li>
+              <li><a href="productRAM.html">RAM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 PCParts&Service. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase (optional, if needed) -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./src/js/firebase-config.js"></script>
+    <!-- Your builder JS file should be included here -->
+    <!-- <script src="./src/js/builder.js"></script> -->
+  </body>
+</html>
