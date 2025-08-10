@@ -19,12 +19,82 @@
   </head>
   <body>
     <div class="mt-4">
-      <button class="btn btn-success">Add GPU</button>
-      <button class="btn btn-warning">Edit GPU</button>
-      <button class="btn btn-danger">Delete GPU</button>
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add GPU
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="gpu-form">
+            <input
+              type="text"
+              id="gpu-title"
+              class="form-control mb-2"
+              placeholder="GPU Title"
+              required
+            />
+            <input
+              type="number"
+              id="GPU-price"
+              class="form-control mb-2"
+              placeholder="GPU Price"
+              required
+            />
+            <input
+              type="text"
+              id="gpu-core-clock"
+              class="form-control mb-2"
+              placeholder="GPU Core Clock"
+              required
+            />
+            <input
+              type="text"
+              id="GPU-tpd"
+              class="form-control mb-2"
+              placeholder="GPU TPD"
+              required
+            />
+            <input
+              type="number"
+              id="GPU-core"
+              class="form-control mb-2"
+              placeholder="GPU Core"
+              required
+            />
+            <input
+              type="text"
+              id="GPU-performance-core-clock"
+              class="form-control mb-2"
+              placeholder="GPU Performance Core Clock"
+              required
+            />
+            <input
+              type="text"
+              id="GPU-description"
+              class="form-control mb-2"
+              placeholder="GPU Description"
+              required
+            />
+            <input type="file" class="form-control mb-2" id="GPU-image" />
+            <input
+              type="button"
+              class="btn btn-primary"
+              id="GPU-submit-btn"
+              value="Confirm"
+              onclick="addGPU()"
+            />
+          </form>
+        </div>
+      </div>
 
       <h2 class="text-info mt-3">GPU List</h2>
-      <ul class="list-group">
+      <ul class="list-group" id="gpu-list">
         <!-- GPU list here -->
       </ul>
     </div>

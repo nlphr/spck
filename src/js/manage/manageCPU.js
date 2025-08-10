@@ -1,4 +1,5 @@
 const cpuList = document.getElementById("cpu-list");
+const cpuForm = document.getElementById("cpu-form");
 
 async function getCpuCount() {
   const snapshot = await db.collection("cpus").get();
@@ -9,13 +10,6 @@ async function getCpuCount() {
 
 function generateCpuId(number) {
   return "cpu" + String(number).padStart(3, "0");
-}
-
-async function generateNextCpuId() {
-  const count = await getCpuCount();
-  const nextId = generateCpuId(count + 1);
-  console.log("Mã ID tiếp theo:", nextId);
-  return nextId;
 }
 
 async function generateNextCpuId() {
@@ -55,21 +49,31 @@ function loadCPU() {
                   <p>Performance Core Clock: ${cpuData.performanceCoreClock}</p>
                   <p>Description: ${cpuData.description}</p>
                   <p>Rating: ${cpuData.rating}</p>
-                  <button class="btn btn-warning" id="cpu-edit-btn">Edit CPU</button>
-                  <button class="btn btn-danger" id="cpu-delete-btn">Delete CPU</button>
+                  <button class="btn btn-warning" id="cpu-edit-btn ${cpuId}">Edit CPU</button>
+                  <button class="btn btn-danger cpu-delete-btn" data-id="${cpuId}">Delete CPU</button>
               </div>
             </div>
           </li>
         `;
       });
-      cpuList.innerHTML = htmls;
+      cpuList.innerHTML += htmls;
+
+      const btnDelete = document.querySelectorAll(".cpu-delete-btn");
+      console.log("Delete buttons:", btnDelete);
+      btnDelete.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const productId = btn.getAttribute("data-id");
+          deleteCPU(productId);
+          loadCPU();
+        });
+      });
     })
     .catch((error) => {
       htmls += `<li class="list-group-item">Error fetching CPU data: ${error.message}</li>`;
-    });
-} 
-
-const cpuForm = document.getElementById("cpu-form");
+      cpuList.innerHTML = htmls;
+      console.error("Error fetching CPU data:", error);
+    })
+}
 
 function addCPU() {
   cpuForm.addEventListener("submit", (e) => {
@@ -125,6 +129,7 @@ function addCPU() {
 }
 
 function deleteCPU(cpuId) {
+  
   if (confirm("Are you sure you want to delete this CPU?")) {
     db.collection("cpuData")
       .doc(cpuId)
@@ -138,3 +143,5 @@ function deleteCPU(cpuId) {
       });
   }
 }
+
+
