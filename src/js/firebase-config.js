@@ -17,4 +17,3 @@ const db = firebase.firestore();
 
 // Initialize Cloud Storage and get a reference to the service
 const storage = firebase.storage();
-

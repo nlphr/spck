@@ -19,11 +19,96 @@
   </head>
   <body>
     <div class="mt-4">
-      <button class="btn btn-success">Add Case</button>
-      <button class="btn btn-warning">Edit Case</button>
-      <button class="btn btn-danger">Delete Case</button>
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add Case
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="case-form">
+            <input
+              type="text"
+              id="case-name"
+              class="form-control mb-2"
+              placeholder="Case Name"
+              required
+            />
+            <input
+              type="text"
+              id="case-title"
+              class="form-control mb-2"
+              placeholder="Case Title"
+              required
+            />
+            <input
+              type="number"
+              id="case-price"
+              class="form-control mb-2"
+              placeholder="Case Price"
+              required
+            />
+            <input
+              type="text"
+              id="case-color"
+              class="form-control mb-2"
+              placeholder="Case Color"
+              required
+            />
+            <input
+              type="text"
+              id="case-type"
+              class="form-control mb-2"
+              placeholder="Case Type"
+              required
+            />
+            <input
+              type="text"
+              id="case-side-panel"
+              class="form-control mb-2"
+              placeholder="Case Side Panel"
+              required
+            />
+            <input
+              type="text"
+              id="case-external-volume"
+              class="form-control mb-2"
+              placeholder="Case External Volume"
+              required
+            />
+            <input
+              type="text"
+              id="case-internal-35-bays"
+              class="form-control mb-2"
+              placeholder="Case Internal 3.5 Bays"
+              required
+            />
+            <input
+              type="text"
+              id="case-description"
+              class="form-control mb-2"
+              placeholder="Case Description"
+              required
+            />
+            <input type="file" id="case-image" class="form-control mb-2" />
+            <input
+              type="button"
+              class="btn btn-primary"
+              id="case-submit-btn"
+              value="Confirm"
+              onclick="addCase()"
+            />
+          </form>
+        </div>
+      </div>
+
       <h2 class="text-info mt-3">Case List</h2>
-      <ul class="list-group">
+      <ul class="list-group" id="case-list">
         <!-- Case list here -->
       </ul>
     </div>
