@@ -2,7 +2,7 @@ const cpuList = document.getElementById("cpu-list");
 const cpuForm = document.getElementById("cpu-form");
 
 async function getCpuCount() {
-  const snapshot = await db.collection("cpus").get();
+  const snapshot = await db.collection("cpuData").get();
   const count = snapshot.size;
   console.log("Tổng số CPU:", count);
   return count;
@@ -49,7 +49,7 @@ function loadCPU() {
                   <p>Performance Core Clock: ${cpuData.performanceCoreClock}</p>
                   <p>Description: ${cpuData.description}</p>
                   <p>Rating: ${cpuData.rating}</p>
-                  <button class="btn btn-warning" id="cpu-edit-btn ${cpuId}">Edit CPU</button>
+                  <button class="btn btn-warning cpu-edit-btn" data-id="${cpuId}">Edit CPU</button>
                   <button class="btn btn-danger cpu-delete-btn" data-id="${cpuId}">Delete CPU</button>
               </div>
             </div>
@@ -59,7 +59,6 @@ function loadCPU() {
       cpuList.innerHTML += htmls;
 
       const btnDelete = document.querySelectorAll(".cpu-delete-btn");
-      console.log("Delete buttons:", btnDelete);
       btnDelete.forEach((btn) => {
         btn.addEventListener("click", () => {
           const productId = btn.getAttribute("data-id");
@@ -67,69 +66,76 @@ function loadCPU() {
           loadCPU();
         });
       });
+      const btnEdit = document.querySelectorAll(".cpu-edit-btn");
+      btnEdit.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const productId = btn.getAttribute("data-id");
+          editCPU(productId);
+        });
+      });
     })
     .catch((error) => {
       htmls += `<li class="list-group-item">Error fetching CPU data: ${error.message}</li>`;
       cpuList.innerHTML = htmls;
       console.error("Error fetching CPU data:", error);
-    })
+    });
 }
 
-function addCPU() {
-  cpuForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const cpuTitle = document.getElementById("cpu-title").value;
-    const cpuPrice = document.getElementById("cpu-price").value;
-    const cpuImageUrl = document.getElementById("cpu-image").files[0];
-    const cpuMicroarchitecture = document.getElementById(
-      "cpu-microarchitecture"
-    ).value;
-    const cpuTPD = document.getElementById("cpu-tpd").value;
-    const cpuCoreCount = document.getElementById("cpu-core-count").value;
-    const cpuPerformanceCoreClock = document.getElementById(
-      "cpu-performance-core-clock"
-    ).value;
-    const cpuDescription = document.getElementById("cpu-description").value;
-    const cpuRating = 0; // Default rating
-    const cpuId = generateNextCpuId();
+cpuForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const cpuTitle = document.getElementById("cpu-title").value;
+  const cpuPrice = document.getElementById("cpu-price").value;
+  const cpuImageUrl = document.getElementById("cpu-image").files[0];
+  const cpuMicroarchitecture = document.getElementById(
+    "cpu-microarchitecture"
+  ).value;
+  const cpuTPD = document.getElementById("cpu-tpd").value;
+  const cpuCoreCount = document.getElementById("cpu-core-count").value;
+  const cpuPerformanceCoreClock = document.getElementById(
+    "cpu-performance-core-clock"
+  ).value;
+  const cpuDescription = document.getElementById("cpu-description").value;
+  const cpuRating = 0; // Default rating
+  const cpuId = await generateNextCpuId();
 
-    if (cpuImageUrl) {
-      const formData = new FormData();
-      formData.append("file", cpuImageUrl);
-    }
+  let formData = new FormData();
+  if (cpuImageUrl) {
+    formData.append("file", cpuImageUrl);
+  }
 
-    fetch("http://localhost:3000/upload", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        db.collection("cpuData").add({
+  fetch("http://localhost:3000/upload", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      return db
+        .collection("cpuData")
+        .doc(cpuId)
+        .set({
           id: cpuId,
           title: cpuTitle,
-          price: cpuPrice,
-          imageUrl: result.data.secure_url, // Assuming the server returns the image URL
+          price: parseFloat(cpuPrice),
+          imageUrl: result.data.secure_url,
           microarchitecture: cpuMicroarchitecture,
           TPD: cpuTPD,
-          coreCount: cpuCoreCount,
+          coreCount: parseInt(cpuCoreCount),
           performanceCoreClock: cpuPerformanceCoreClock,
           description: cpuDescription,
           rating: cpuRating,
         });
-      })
-      .then(() => {
-        alert("CPU added successfully!");
-        cpuForm.reset();
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Error adding CPU:", error);
-      });
-  });
-}
+    })
+    .then(() => {
+      alert("CPU added successfully!");
+      cpuForm.reset();
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error("Error adding CPU:", error);
+    });
+});
 
 function deleteCPU(cpuId) {
-  
   if (confirm("Are you sure you want to delete this CPU?")) {
     db.collection("cpuData")
       .doc(cpuId)
@@ -144,4 +150,7 @@ function deleteCPU(cpuId) {
   }
 }
 
-
+function editCPU(cpuId) {
+  // Functionality to edit CPU details can be implemented here
+  alert(`Edit functionality for CPU ID: ${cpuId} is not implemented yet.`);
+}
