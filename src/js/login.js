@@ -1,32 +1,32 @@
-// Import the necessary Firebase Authentication functions
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { signInUser, signInWithGoogle } from './firebase.js';
 
-// Initialize Firebase Authentication
-const auth = getAuth();
-
-// Add an event listener to the login form
 document.getElementById('login-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
+  event.preventDefault();
 
-  // Get the email and password from the form inputs
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  // Sign in the user with Firebase Authentication
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in successfully
-      const user = userCredential.user;
-      console.log('User signed in:', user);
-      // Display success message
+  signInUser(email, password)
+    .then(() => {
+      console.log('User signed in.');
       document.getElementById('login-message').textContent = 'Login successful!';
     })
     .catch((error) => {
-      // Handle errors here
-      const errorCode = error.code;
       const errorMessage = error.message;
-      console.error('Error signing in:', errorCode, errorMessage);
-      // Display error message to the user
+      console.error('Error signing in:', errorMessage);
       document.getElementById('login-message').textContent = 'Error signing in: ' + errorMessage;
+    });
+});
+
+document.getElementById('google-login-button').addEventListener('click', function() {
+  signInWithGoogle()
+    .then(() => {
+      console.log('Google user signed in.');
+      document.getElementById('login-message').textContent = 'Google login successful!';
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      console.error('Error with Google sign-in:', errorMessage);
+      document.getElementById('login-message').textContent = 'Error with Google sign-in: ' + errorMessage;
     });
 }); 
