@@ -15,7 +15,7 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./src/css/admin.css" />
   </head>
   <body>
@@ -35,7 +35,7 @@
           <form id="cpu-form">
             <input
               type="text"
-              id="cpu-name"
+              id="cpu-title"
               class="form-control mb-2"
               placeholder="CPU Name"
               required
@@ -49,7 +49,7 @@
             />
             <input
               type="text"
-              id="cpu-micro-architecture"
+              id="cpu-microarchitecture"
               class="form-control mb-2"
               placeholder="CPU Micro Architecture"
               required
@@ -63,7 +63,7 @@
             />
             <input
               type="number"
-              id="cpu-core"
+              id="cpu-core-count"
               class="form-control mb-2"
               placeholder="CPU Core"
               required
@@ -82,13 +82,17 @@
               placeholder="CPU Description"
               required
             />
-            <input type="file" class="form-control mb-2" id="cpu-image" />
+            <input
+              type="file"
+              id="cpu-image"
+              class="form-control mb-2"
+              placeholder="CPU Image URL"
+            />
             <input
               type="button"
               class="btn btn-primary"
-              id="cpu-submit-btn"
-              value="Confirm"
-              onclick="addCpu()"
+              id="add-cpu-btn"
+              value="Add CPU"
             />
           </form>
         </div>
@@ -109,7 +113,5 @@
   <script src="./src/js/manage/manageCPU.js"></script>
   <script>
     loadCPU();
-    addCPU();
-
   </script>
 </html>
