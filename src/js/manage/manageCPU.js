@@ -167,85 +167,6 @@ function deleteCPU(cpuId) {
   }
 }
 
-// function editCPU(cpuId) {
-//   const editForm = document.getElementById("edit-cpu-form");
-
-//   editForm.addEventListener("submit", function (e) {
-//     e.preventDefault();
-
-//     const cpuTitle = document.getElementById("edit-cpu-title").value;
-//     const cpuPrice = document.getElementById("edit-cpu-price").value;
-//     const cpuImageFile = document.getElementById("edit-cpu-image").files[0];
-//     const cpuMicroarchitecture = document.getElementById(
-//       "edit-cpu-microarchitecture"
-//     ).value;
-//     const cpuTPD = document.getElementById("edit-cpu-tpd").value;
-//     const cpuCoreCount = document.getElementById("edit-cpu-core-count").value;
-//     const cpuPerformanceCoreClock = document.getElementById(
-//       "edit-cpu-performance-core-clock"
-//     ).value;
-//     const cpuRating = document.getElementById("edit-cpu-rating").value;
-//     const cpuDescription = document.getElementById(
-//       "edit-cpu-description"
-//     ).value;
-
-//     let updateData = {
-//       title: cpuTitle,
-//       price: parseFloat(cpuPrice),
-//       microarchitecture: cpuMicroarchitecture,
-//       TPD: cpuTPD,
-//       coreCount: parseInt(cpuCoreCount),
-//       performanceCoreClock: cpuPerformanceCoreClock,
-//       description: cpuDescription,
-//       rating: parseFloat(cpuRating) || 0,
-//     };
-
-//     if (imageUrl) {
-//       updateData.imageUrl = imageUrl;
-//     }
-
-//     db.collection("cpuData")
-//       .doc(cpuId)
-//       .update(updateData)
-//       .then(function () {
-//         alert("CPU updated successfully!");
-//         console.log("CPU updated successfully!");
-//         editForm.reset();
-//         window.location.reload();
-//       })
-//       .catch(function (error) {
-//         console.error("Error updating CPU:", error);
-//         alert("Có lỗi khi cập nhật CPU!");
-//       });
-
-//     if (cpuImageFile) {
-//       let formData = new FormData();
-//       formData.append("image", cpuImageFile);
-
-//       fetch("https://server-file-upload.onrender.com/upload", {
-//         method: "POST",
-//         body: formData,
-//       })
-//         .then(function (res) {
-//           return res.json();
-//         })
-//         .then(function (result) {
-//           if (result && result.data && result.data.secure_url) {
-//             updateCPU(result.data.secure_url);
-//           } else {
-//             throw new Error("Không nhận được secure_url từ server upload!");
-//           }
-//         })
-//         .catch(function (error) {
-//           console.error("Error uploading image:", error);
-//           alert("Có lỗi khi upload ảnh!");
-//         });
-//     } else {
-//       console.log("No image file selected, skipping upload.");
-//     }
-//   });
-// }
-
 function editCPU(cpuId) {
   const editForm = document.getElementById("edit-cpu-form");
 
@@ -255,12 +176,18 @@ function editCPU(cpuId) {
     const cpuTitle = document.getElementById("edit-cpu-title").value;
     const cpuPrice = document.getElementById("edit-cpu-price").value;
     const cpuImageFile = document.getElementById("edit-cpu-image").files[0];
-    const cpuMicroarchitecture = document.getElementById("edit-cpu-microarchitecture").value;
+    const cpuMicroarchitecture = document.getElementById(
+      "edit-cpu-microarchitecture"
+    ).value;
     const cpuTPD = document.getElementById("edit-cpu-tpd").value;
     const cpuCoreCount = document.getElementById("edit-cpu-core-count").value;
-    const cpuPerformanceCoreClock = document.getElementById("edit-cpu-performance-core-clock").value;
+    const cpuPerformanceCoreClock = document.getElementById(
+      "edit-cpu-performance-core-clock"
+    ).value;
     const cpuRating = document.getElementById("edit-cpu-rating").value;
-    const cpuDescription = document.getElementById("edit-cpu-description").value;
+    const cpuDescription = document.getElementById(
+      "edit-cpu-description"
+    ).value;
 
     let updateData = {
       title: cpuTitle,
@@ -285,12 +212,11 @@ function editCPU(cpuId) {
         .then(function () {
           alert("CPU updated successfully!");
           console.log("CPU updated successfully!");
-          editForm.reset();
           window.location.reload();
         })
         .catch(function (error) {
           console.error("Error updating CPU:", error);
-          alert("Có lỗi khi cập nhật CPU!");
+          alert("Có lỗi khi cập nhật CPU, vui lòng thử lại!");
         });
     }
 
