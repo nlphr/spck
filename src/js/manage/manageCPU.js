@@ -49,7 +49,24 @@ function loadCPU() {
                   <p>Performance Core Clock: ${cpuData.performanceCoreClock}</p>
                   <p>Description: ${cpuData.description}</p>
                   <p>Rating: ${cpuData.rating}</p>
-                  <button class="btn btn-warning cpu-edit-btn" data-id="${cpuId}">Edit CPU</button>
+                  <button class="btn btn-warning cpu-edit-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit" aria-expanded="false" aria-controls="collapseEdit" data-id="${cpuId}">Edit CPU</button>
+                    <div class="collapse" id="collapseEdit">
+                      <div class="card card-body">
+                        <form id="edit-cpu-form">
+                          <input type="hidden" id="edit-cpu-id" value="${cpuId}" />
+                          <input type="text" id="edit-cpu-title" class="form-control mb-2" placeholder="CPU Name" value="${cpuData.title}" />
+                          <input type="number" id="edit-cpu-price" class="form-control mb-2" placeholder="CPU Price" value="${cpuData.price}" />
+                          <input type="text" id="edit-cpu-microarchitecture" class="form-control mb-2" placeholder="Micro Architecture" value="${cpuData.microarchitecture}" />
+                          <input type="text" id="edit-cpu-tpd" class="form-control mb-2" placeholder="TPD" value="${cpuData.TPD}" />
+                          <input type="number" id="edit-cpu-core-count" class="form-control mb-2" placeholder="Core Count" value="${cpuData.coreCount}" />
+                          <input type="text" id="edit-cpu-performance-core-clock" class="form-control mb-2" placeholder="Performance Core Clock" value="${cpuData.performanceCoreClock}" />
+                          <input type="number" id="edit-cpu-rating" class="form-control mb-2" placeholder="Rating" value="${cpuData.rating}" />
+                          <textarea id="edit-cpu-description" class="form-control mb-2" placeholder="Description">${cpuData.description}</textarea>
+                          <input type="file" id="edit-cpu-image" class="form-control mb-2" />
+                          <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                      </div>
+                    </div>
                   <button class="btn btn-danger cpu-delete-btn" data-id="${cpuId}">Delete CPU</button>
               </div>
             </div>
@@ -76,7 +93,7 @@ function loadCPU() {
     })
     .catch((error) => {
       htmls += `<li class="list-group-item">Error fetching CPU data: ${error.message}</li>`;
-      cpuList.innerHTML = htmls;
+      cpuList.innerHTML += htmls;
       console.error("Error fetching CPU data:", error);
     });
 }
@@ -100,10 +117,10 @@ cpuForm.addEventListener("submit", async (e) => {
 
   let formData = new FormData();
   if (cpuImageUrl) {
-    formData.append("file", cpuImageUrl);
+    formData.append("image", cpuImageUrl);
   }
 
-  fetch("http://localhost:3000/upload", {
+  fetch("https://server-file-upload.onrender.com/upload", {
     method: "POST",
     body: formData,
   })
@@ -150,7 +167,157 @@ function deleteCPU(cpuId) {
   }
 }
 
+// function editCPU(cpuId) {
+//   const editForm = document.getElementById("edit-cpu-form");
+
+//   editForm.addEventListener("submit", function (e) {
+//     e.preventDefault();
+
+//     const cpuTitle = document.getElementById("edit-cpu-title").value;
+//     const cpuPrice = document.getElementById("edit-cpu-price").value;
+//     const cpuImageFile = document.getElementById("edit-cpu-image").files[0];
+//     const cpuMicroarchitecture = document.getElementById(
+//       "edit-cpu-microarchitecture"
+//     ).value;
+//     const cpuTPD = document.getElementById("edit-cpu-tpd").value;
+//     const cpuCoreCount = document.getElementById("edit-cpu-core-count").value;
+//     const cpuPerformanceCoreClock = document.getElementById(
+//       "edit-cpu-performance-core-clock"
+//     ).value;
+//     const cpuRating = document.getElementById("edit-cpu-rating").value;
+//     const cpuDescription = document.getElementById(
+//       "edit-cpu-description"
+//     ).value;
+
+//     let updateData = {
+//       title: cpuTitle,
+//       price: parseFloat(cpuPrice),
+//       microarchitecture: cpuMicroarchitecture,
+//       TPD: cpuTPD,
+//       coreCount: parseInt(cpuCoreCount),
+//       performanceCoreClock: cpuPerformanceCoreClock,
+//       description: cpuDescription,
+//       rating: parseFloat(cpuRating) || 0,
+//     };
+
+//     if (imageUrl) {
+//       updateData.imageUrl = imageUrl;
+//     }
+
+//     db.collection("cpuData")
+//       .doc(cpuId)
+//       .update(updateData)
+//       .then(function () {
+//         alert("CPU updated successfully!");
+//         console.log("CPU updated successfully!");
+//         editForm.reset();
+//         window.location.reload();
+//       })
+//       .catch(function (error) {
+//         console.error("Error updating CPU:", error);
+//         alert("Có lỗi khi cập nhật CPU!");
+//       });
+
+//     if (cpuImageFile) {
+//       let formData = new FormData();
+//       formData.append("image", cpuImageFile);
+
+//       fetch("https://server-file-upload.onrender.com/upload", {
+//         method: "POST",
+//         body: formData,
+//       })
+//         .then(function (res) {
+//           return res.json();
+//         })
+//         .then(function (result) {
+//           if (result && result.data && result.data.secure_url) {
+//             updateCPU(result.data.secure_url);
+//           } else {
+//             throw new Error("Không nhận được secure_url từ server upload!");
+//           }
+//         })
+//         .catch(function (error) {
+//           console.error("Error uploading image:", error);
+//           alert("Có lỗi khi upload ảnh!");
+//         });
+//     } else {
+//       console.log("No image file selected, skipping upload.");
+//     }
+//   });
+// }
+
 function editCPU(cpuId) {
-  // Functionality to edit CPU details can be implemented here
-  alert(`Edit functionality for CPU ID: ${cpuId} is not implemented yet.`);
+  const editForm = document.getElementById("edit-cpu-form");
+
+  editForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const cpuTitle = document.getElementById("edit-cpu-title").value;
+    const cpuPrice = document.getElementById("edit-cpu-price").value;
+    const cpuImageFile = document.getElementById("edit-cpu-image").files[0];
+    const cpuMicroarchitecture = document.getElementById("edit-cpu-microarchitecture").value;
+    const cpuTPD = document.getElementById("edit-cpu-tpd").value;
+    const cpuCoreCount = document.getElementById("edit-cpu-core-count").value;
+    const cpuPerformanceCoreClock = document.getElementById("edit-cpu-performance-core-clock").value;
+    const cpuRating = document.getElementById("edit-cpu-rating").value;
+    const cpuDescription = document.getElementById("edit-cpu-description").value;
+
+    let updateData = {
+      title: cpuTitle,
+      price: parseFloat(cpuPrice),
+      microarchitecture: cpuMicroarchitecture,
+      TPD: cpuTPD,
+      coreCount: parseInt(cpuCoreCount),
+      performanceCoreClock: cpuPerformanceCoreClock,
+      description: cpuDescription,
+      rating: parseFloat(cpuRating) || 0,
+    };
+
+    // Hàm update vào Firestore
+    function updateCPU(imageUrl) {
+      if (imageUrl) {
+        updateData.imageUrl = imageUrl;
+      }
+
+      db.collection("cpuData")
+        .doc(cpuId)
+        .update(updateData)
+        .then(function () {
+          alert("CPU updated successfully!");
+          console.log("CPU updated successfully!");
+          editForm.reset();
+          window.location.reload();
+        })
+        .catch(function (error) {
+          console.error("Error updating CPU:", error);
+          alert("Có lỗi khi cập nhật CPU!");
+        });
+    }
+
+    // Nếu có ảnh thì upload trước, rồi mới update Firestore
+    if (cpuImageFile) {
+      let formData = new FormData();
+      formData.append("image", cpuImageFile);
+
+      fetch("https://server-file-upload.onrender.com/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result && result.data && result.data.secure_url) {
+            updateCPU(result.data.secure_url); // update Firestore kèm ảnh
+          } else {
+            throw new Error("Không nhận được secure_url từ server upload!");
+          }
+        })
+        .catch((error) => {
+          console.error("Error uploading image:", error);
+          alert("Có lỗi khi upload ảnh!");
+        });
+    } else {
+      // Nếu không có ảnh thì update luôn
+      updateCPU();
+    }
+  });
 }
