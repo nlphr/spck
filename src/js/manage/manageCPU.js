@@ -1,19 +1,19 @@
 const cpuList = document.getElementById("cpu-list");
 const cpuForm = document.getElementById("cpu-form");
 
-async function getCpuCount() {
+async function getCPUCount() {
   const snapshot = await db.collection("cpuData").get();
   const count = snapshot.size;
   return count;
 }
 
-function generateCpuId(number) {
+function generateCPUId(number) {
   return "cpu" + String(number).padStart(3, "0");
 }
 
-async function generateNextCpuId() {
-  const count = await getCpuCount();
-  const nextId = generateCpuId(count + 1);
+async function generateNextCPUId() {
+  const count = await getCPUCount();
+  const nextId = generateCPUId(count + 1);
   console.log("Mã ID tiếp theo:", nextId);
   return nextId;
 }
@@ -112,7 +112,7 @@ cpuForm.addEventListener("submit", async (e) => {
   ).value;
   const cpuDescription = document.getElementById("cpu-description").value;
   const cpuRating = 0; // Default rating
-  const cpuId = await generateNextCpuId();
+  const cpuId = await generateNextCPUId();
 
   let formData = new FormData();
   if (cpuImage) {

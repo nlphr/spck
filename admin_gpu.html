@@ -15,10 +15,15 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./src/css/admin.css" />
   </head>
   <body>
     <div class="mt-4">
+      <h2 class="text-info">Manage GPUs</h2>
+      <button class="btn btn-info" type="button" href="./admin.html">
+        Back to admin
+      </button>
       <button
         class="btn btn-success"
         type="button"
@@ -40,12 +45,34 @@
               required
             />
             <input
+              type="text"
+              id="gpu-chipset"
+              class="form-control mb-2"
+              placeholder="GPU Chipset"
+              required
+            />
+            <input
               type="number"
-              id="GPU-price"
+              id="gpu-price"
               class="form-control mb-2"
               placeholder="GPU Price"
               required
             />
+            <input
+              type="text"
+              id="gpu-length"
+              class="form-control mb-2"
+              placeholder="GPU Length"
+              required
+            />
+            <input
+              type="text"
+              id="gpu-memory"
+              class="form-control mb-2"
+              placeholder="GPU Memory"
+              required
+            />
+
             <input
               type="text"
               id="gpu-core-clock"
@@ -55,40 +82,19 @@
             />
             <input
               type="text"
-              id="GPU-tpd"
-              class="form-control mb-2"
-              placeholder="GPU TPD"
-              required
-            />
-            <input
-              type="number"
-              id="GPU-core"
-              class="form-control mb-2"
-              placeholder="GPU Core"
-              required
-            />
-            <input
-              type="text"
-              id="GPU-performance-core-clock"
-              class="form-control mb-2"
-              placeholder="GPU Performance Core Clock"
-              required
-            />
-            <input
-              type="text"
-              id="GPU-description"
+              id="gpu-description"
               class="form-control mb-2"
               placeholder="GPU Description"
               required
             />
-            <input type="file" class="form-control mb-2" id="GPU-image" />
             <input
-              type="button"
-              class="btn btn-primary"
-              id="GPU-submit-btn"
-              value="Confirm"
-              onclick="addGPU()"
+              type="file"
+              id="gpu-image"
+              class="form-control mb-2"
+              placeholder="GPU Image"
+              required
             />
+            <button type="submit" class="btn btn-primary">Confirm</button>
           </form>
         </div>
       </div>
@@ -99,4 +105,14 @@
       </ul>
     </div>
   </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <script src="./src/js/firebase-config.js"></script>
+  <script src="./src/js/manage/manageGPU.js"></script>
+  <script>
+    loadGPU();
+  </script>
 </html>
