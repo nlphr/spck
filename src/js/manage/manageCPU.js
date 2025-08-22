@@ -4,7 +4,6 @@ const cpuForm = document.getElementById("cpu-form");
 async function getCpuCount() {
   const snapshot = await db.collection("cpuData").get();
   const count = snapshot.size;
-  console.log("Tổng số CPU:", count);
   return count;
 }
 
@@ -102,7 +101,7 @@ cpuForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const cpuTitle = document.getElementById("cpu-title").value;
   const cpuPrice = document.getElementById("cpu-price").value;
-  const cpuImageUrl = document.getElementById("cpu-image").files[0];
+  const cpuImage = document.getElementById("cpu-image").files[0];
   const cpuMicroarchitecture = document.getElementById(
     "cpu-microarchitecture"
   ).value;
@@ -116,8 +115,8 @@ cpuForm.addEventListener("submit", async (e) => {
   const cpuId = await generateNextCpuId();
 
   let formData = new FormData();
-  if (cpuImageUrl) {
-    formData.append("image", cpuImageUrl);
+  if (cpuImage) {
+    formData.append("image", cpuImage);
   }
 
   fetch("https://server-file-upload.onrender.com/upload", {
@@ -172,7 +171,6 @@ function editCPU(cpuId) {
 
   editForm.addEventListener("submit", function (e) {
     e.preventDefault();
-
     const cpuTitle = document.getElementById("edit-cpu-title").value;
     const cpuPrice = document.getElementById("edit-cpu-price").value;
     const cpuImageFile = document.getElementById("edit-cpu-image").files[0];
