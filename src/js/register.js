@@ -1,8 +1,5 @@
 // Import the necessary Firebase Authentication functions
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-// Initialize Firebase Authentication
-const auth = getAuth();
+import { createUserWithEmailAndPassword, auth } from "./firebase.js";
 
 // Add an event listener to the registration form
 document.getElementById('register-form').addEventListener('submit', function(event) {
@@ -28,6 +25,6 @@ document.getElementById('register-form').addEventListener('submit', function(eve
       const errorMessage = error.message;
       console.error('Error registering:', errorCode, errorMessage);
       // Display error message to the user
-      document.getElementById('register-message').textContent = 'Error registering: ' + errorMessage;
+      document.getElementById('register-message').textContent = `Error registering: ${errorCode} - ${errorMessage}`;
     });
 }); 
