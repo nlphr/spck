@@ -10,11 +10,12 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     .then(() => {
       console.log('User signed in.');
       document.getElementById('login-message').textContent = 'Login successful!';
+      window.location.href = 'index.html';
     })
     .catch((error) => {
       const errorMessage = error.message;
-      console.error('Error signing in:', errorMessage);
-      document.getElementById('login-message').textContent = 'Error signing in: ' + errorMessage;
+      console.error('Error signing in:', error.code, errorMessage);
+      document.getElementById('login-message').textContent = `Error signing in: ${error.code} - ${errorMessage}`;
     });
 });
 
@@ -23,10 +24,11 @@ document.getElementById('google-login-button').addEventListener('click', functio
     .then(() => {
       console.log('Google user signed in.');
       document.getElementById('login-message').textContent = 'Google login successful!';
+      window.location.href = 'index.html';
     })
     .catch((error) => {
       const errorMessage = error.message;
-      console.error('Error with Google sign-in:', errorMessage);
-      document.getElementById('login-message').textContent = 'Error with Google sign-in: ' + errorMessage;
+      console.error('Error with Google sign-in:', error.code, errorMessage);
+      document.getElementById('login-message').textContent = `Error with Google sign-in: ${error.code} - ${errorMessage}`;
     });
 }); 
