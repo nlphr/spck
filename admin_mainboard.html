@@ -15,17 +15,104 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./src/css/admin.css" />
   </head>
   <body>
     <div class="mt-4">
-      <button class="btn btn-sucess">Add Mainboard</button>
-      <button class="btn btn-warning">Edit Mainboard</button>
-      <button class="btn btn-danger">Delete Mainboard</button>
+      <h2 class="text-info">Manage Mainboards</h2>
+      <button class="btn btn-info" type="button" href="./admin.html">
+        Back to admin
+      </button>
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add Mainboard
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="mainboard-form">
+            <input
+              type="text"
+              id="mainboard-title"
+              class="form-control mb-2"
+              placeholder="Mainboard Title"
+              required
+            />
+            <input
+              type="text"
+              id="mainboard-name"
+              class="form-control mb-2"
+              placeholder="Mainboard Name"
+              required
+            />
+            <input
+              type="number"
+              id="mainboard-price"
+              class="form-control mb-2"
+              placeholder="Mainboard Price"
+              required
+            />
+            <input
+              type="number"
+              id="mainboard-memory-slots"
+              class="form-control mb-2"
+              placeholder="Mainboard Memory Slots"
+              required
+            />
+            <input
+              type="text"
+              id="mainboard-memory-max"
+              class="form-control mb-2"
+              placeholder="Mainboard Memory Max"
+              required
+            />
+
+            <input
+              type="text"
+              id="mainboard-form-factor"
+              class="form-control mb-2"
+              placeholder="Mainboard Form Factor"
+              required
+            />
+            <input
+              type="text"
+              id="mainboard-cpu-socket"
+              class="form-control mb-2"
+              placeholder="Mainboard CPU Socket"
+              required
+            />
+            <input
+              type="file"
+              id="mainboard-image"
+              class="form-control mb-2"
+              placeholder="Mainboard Image"
+              required
+            />
+            <button type="submit" class="btn btn-primary">Confirm</button>
+          </form>
+        </div>
+      </div>
+
       <h2 class="text-info mt-3">Mainboard List</h2>
-      <ul class="list-group">
+      <ul class="list-group" id="mainboard-list">
         <!-- Mainboard list here -->
       </ul>
     </div>
   </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <script src="./src/js/firebase-config.js"></script>
+  <script src="./src/js/manage/manageMainboard.js"></script>
+  <script>
+    loadMainboard();
+  </script>
 </html>

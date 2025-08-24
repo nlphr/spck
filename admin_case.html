@@ -19,6 +19,10 @@
   </head>
   <body>
     <div class="mt-4">
+      <h2 class="text-info">Manage Cases</h2>
+      <button class="btn btn-info" type="button" href="./admin.html">
+        Back to admin
+      </button>
       <button
         class="btn btn-success"
         type="button"
@@ -95,14 +99,14 @@
               placeholder="Case Description"
               required
             />
-            <input type="file" id="case-image" class="form-control mb-2" />
             <input
-              type="button"
-              class="btn btn-primary"
-              id="case-submit-btn"
-              value="Confirm"
-              onclick="addCase()"
+              type="file"
+              id="case-image"
+              class="form-control mb-2"
+              placeholder="Case Image"
+              required
             />
+            <button type="submit" class="btn btn-primary">Confirm</button>
           </form>
         </div>
       </div>
@@ -113,4 +117,14 @@
       </ul>
     </div>
   </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <script src="./src/js/firebase-config.js"></script>
+  <script src="./src/js/manage/manageCase.js"></script>
+  <script>
+    loadCase();
+  </script>
 </html>
