@@ -79,7 +79,6 @@ function loadCPU() {
         btn.addEventListener("click", () => {
           const productId = btn.getAttribute("data-id");
           deleteCPU(productId);
-          loadCPU();
         });
       });
       const btnEdit = document.querySelectorAll(".cpu-edit-btn");

@@ -1,78 +1,78 @@
-const gpuList = document.getElementById("gpu-list");
-const gpuForm = document.getElementById("gpu-form");
+const mainboardList = document.getElementById("mainboard-list");
+const mainboardForm = document.getElementById("mainboard-form");
 
-async function getGPUCount() {
-  const snapshot = await db.collection("gpuData").get();
+async function getMainboardCount() {
+  const snapshot = await db.collection("mainboardData").get();
   const count = snapshot.size;
   return count;
 }
 
-function generateGPUId(number) {
-  return "gpu" + String(number).padStart(3, "0");
+function generateMainboardId(number) {
+  return "mainboard" + String(number).padStart(3, "0");
 }
 
-async function generateNextGPUId() {
-  const count = await getGPUCount();
-  const nextId = generateGPUId(count + 1);
+async function generateNextMainboardId() {
+  const count = await getMainboardCount();
+  const nextId = generateMainboardId(count + 1);
   console.log("Mã ID tiếp theo:", nextId);
   return nextId;
 }
 
-function loadGPU() {
+function loadMainboard() {
   let htmls = "";
-  db.collection("gpuData")
+  db.collection("mainboardData")
     .orderBy("id", "desc")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        const gpuData = doc.data();
-        const gpuId = doc.id;
+        const mainboardData = doc.data();
+        const mainboardId = doc.id;
         const formattedPrice = new Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "USD",
-        }).format(gpuData.price);
+        }).format(mainboardData.price);
 
         htmls += `
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <div class="row">
               <div class="col-md-2">
-                  <img src="${gpuData.imageUrl}" class="img-fluid">
+                  <img src="${mainboardData.imageUrl}" class="img-fluid">
               </div>
               <div class="col-md-10">
-                  <h5>${gpuData.title}</h5>
-                  <p>ID: ${gpuId}</p>
-                  <p>Chipset: ${gpuData.chipset}</p>
+                  <h5>${mainboardData.title}</h5>
+                  <p>ID: ${mainboardId}</p>
+                  <p>Chipset: ${mainboardData.chipset}</p>
                   <p>Price: ${formattedPrice}</p>
-                  <p>Length: ${gpuData.length}</p>
-                  <p>Memory: ${gpuData.memory}</p>
-                  <p>Core Clock: ${gpuData.coreClock}</p>
-                  <p>Description: ${gpuData.description}</p>
-                  <p>Rating: ${gpuData.rating}</p>
-                  <button class="btn btn-warning gpu-edit-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit" aria-expanded="false" aria-controls="collapseEdit" data-id="${gpuId}">Edit GPU</button>
+                  <p>Length: ${mainboardData.length}</p>
+                  <p>Memory: ${mainboardData.memory}</p>
+                  <p>Core Clock: ${mainboardData.coreClock}</p>
+                  <p>Description: ${mainboardData.description}</p>
+                  <p>Rating: ${mainboardData.rating}</p>
+                  <button class="btn btn-warning gpu-edit-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit" aria-expanded="false" aria-controls="collapseEdit" data-id="${mainboardId}">Edit GPU</button>
                     <div class="collapse" id="collapseEdit">
                       <div class="card card-body">
                         <form id="edit-gpu-form">
-                          <input type="hidden" id="edit-gpu-id" value="${gpuId}" />
-                          <input type="text" id="edit-gpu-title" class="form-control mb-2" placeholder="Title" value="${gpuData.title}" />
-                          <input type="text" id="edit-gpu-chipset" class="form-control mb-2" placeholder="Chipset" value="${gpuData.chipset}" />
-                          <input type="number" id="edit-gpu-price" class="form-control mb-2" placeholder="Price" value="${gpuData.price}" />
-                          <input type="text" id="edit-gpu-length" class="form-control mb-2" placeholder="Length" value="${gpuData.length}" />
-                          <input type="text" id="edit-gpu-memory" class="form-control mb-2" placeholder="Memory" value="${gpuData.memory}" />
-                          <input type="text" id="edit-gpu-core-clock" class="form-control mb-2" placeholder="Core Clock" value="${gpuData.coreClock}" />
-                          <input type="number" id="edit-gpu-rating" class="form-control mb-2" placeholder="Rating" value="${gpuData.rating}" />
-                          <textarea id="edit-gpu-description" class="form-control mb-2" placeholder="Description">${gpuData.description}</textarea>
+                          <input type="hidden" id="edit-gpu-id" value="${mainboardId}" />
+                          <input type="text" id="edit-gpu-title" class="form-control mb-2" placeholder="Title" value="${mainboardData.title}" />
+                          <input type="text" id="edit-gpu-chipset" class="form-control mb-2" placeholder="Chipset" value="${mainboardData.chipset}" />
+                          <input type="number" id="edit-gpu-price" class="form-control mb-2" placeholder="Price" value="${mainboardData.price}" />
+                          <input type="text" id="edit-gpu-length" class="form-control mb-2" placeholder="Length" value="${mainboardData.length}" />
+                          <input type="text" id="edit-gpu-memory" class="form-control mb-2" placeholder="Memory" value="${mainboardData.memory}" />
+                          <input type="text" id="edit-gpu-core-clock" class="form-control mb-2" placeholder="Core Clock" value="${mainboardData.coreClock}" />
+                          <input type="number" id="edit-gpu-rating" class="form-control mb-2" placeholder="Rating" value="${mainboardData.rating}" />
+                          <textarea id="edit-gpu-description" class="form-control mb-2" placeholder="Description">${mainboardData.description}</textarea>
                           <input type="file" id="edit-gpu-image" class="form-control mb-2" />
                           <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>
                       </div>
                     </div>
-                  <button class="btn btn-danger gpu-delete-btn" data-id="${gpuId}">Delete GPU</button>
+                  <button class="btn btn-danger gpu-delete-btn" data-id="${mainboardId}">Delete GPU</button>
               </div>
             </div>
           </li>
         `;
       });
-      gpuList.innerHTML += htmls;
+      mainboardList.innerHTML += htmls;
 
       const btnDelete = document.querySelectorAll(".gpu-delete-btn");
       btnDelete.forEach((btn) => {
@@ -91,7 +91,7 @@ function loadGPU() {
     })
     .catch((error) => {
       htmls += `<li class="list-group-item">Error fetching GPU data: ${error.message}</li>`;
-      gpuList.innerHTML += htmls;
+      mainboardList.innerHTML += htmls;
       console.error("Error fetching GPU data:", error);
     });
 }
@@ -121,7 +121,7 @@ gpuForm.addEventListener("submit", async (e) => {
     .then((response) => response.json())
     .then((result) => {
       return db
-        .collection("gpuData")
+        .collection("mainboardData")
         .doc(gpuId)
         .set({
           id: gpuId,

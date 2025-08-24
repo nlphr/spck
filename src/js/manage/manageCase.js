@@ -83,7 +83,6 @@ function loadCase() {
         btn.addEventListener("click", () => {
           const productId = btn.getAttribute("data-id");
           deleteCase(productId);
-          loadCase();
         });
       });
       const btnEdit = document.querySelectorAll(".case-edit-btn");
