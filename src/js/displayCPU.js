@@ -1,8 +1,9 @@
-import { db } from "./firebase-config.js";
-function displayCPU(list) {
+const product_list = document.getElementById('cpu-product-list');
+
+function displayCPU() {
   let htmls = "";
   db.collection("cpuData")
-    .orderBy("id")
+    .orderBy("id", "desc")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -13,50 +14,34 @@ function displayCPU(list) {
           currency: "USD",
         }).format(cpuData.price);
 
-        htmls += `
-        <div class="product-row">
-          <div class="col-name">
-            <div class="product-info">
-              <div class="product-image">
-                <img src="${cpuData.imageUrl}" alt="${cpuData.title}" class="cpu-image">
-              </div>
-              <div class="product-details">
-                <h4 class="product-title">${cpuData.title}</h4>
-                <p class="product-id">ID: ${cpuId}</p>
-                <p class="product-description">${cpuData.description}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-core" data-label="Core Count">
-            <span class="data-value">${cpuData.coreCount}</span>
-          </div>
-          <div class="col-clock" data-label="Performance Core Clock">
-            <span class="data-value">${cpuData.performanceCoreClock}</span>
-          </div>
-          <div class="col-arch" data-label="Microarchitecture">
-            <span class="data-value">${cpuData.microarchitecture}</span>
-          </div>
-          <div class="col-tdp" data-label="TDP">
-            <span class="data-value">${cpuData.TPD}</span>
-          </div>
-          <div class="col-rating" data-label="Rating">
-            <div class="rating-stars">
-              ${generateStarRating(cpuData.rating)}
-            </div>
-            <span class="rating-text">${cpuData.rating}/5</span>
-          </div>
-          <div class="col-price" data-label="Price">
-            <span class="price-value">${formattedPrice}</span>
-            <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-        </div>
-      `;
-    });
-      list.innerHTML = htmls;
+htmls += `
+  <div class="product-row">
+    <div class="col-image">
+      <img src="${cpuData.imageUrl}" alt="${cpuData.title}">
+    </div>
+    <div class="col-name">
+      <h4 class="product-title">${cpuData.title}</h4>
+    </div>
+    <div class="col-core"><span class="data-value">${cpuData.coreCount}</span></div>
+    <div class="col-clock"><span class="data-value">${cpuData.performanceCoreClock}</span></div>
+    <div class="col-arch"><span class="data-value">${cpuData.microarchitecture || "N/A"}</span></div>
+
+    <div class="col-tdp"><span class="data-value">${cpuData.TDP}</span></div>
+    <div class="col-rating">
+      <div class="rating-stars">${"★".repeat(cpuData.rating)}${"☆".repeat(5 - cpuData.rating)}</div>
+      <span class="rating-text">${cpuData.rating}/5</span>
+    </div>
+    <div class="col-price">
+      <span class="price-value">${formattedPrice}</span>
+      <button class="add-to-cart-btn">Buy</button>
+    </div>
+  </div>
+`;
+      });
+      product_list.innerHTML = htmls;
     })
     .catch((error) => {
-      console.error("Error fetching CPU data: ", error);
+      product_list.innerHTML = `<div class="error-message"><p>Error fetching CPU data: ${error.message}</p></div>`;
+      console.error("Error fetching CPU data:", error);
     });
 }
-
-export { displayCPU };

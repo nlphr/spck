@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./src/css/admin.css" />
+  </head>
+  <body>
+    <div class="mt-4">
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add CPU
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="cpu-form">
+            <input
+              type="text"
+              id="cpu-title"
+              class="form-control mb-2"
+              placeholder="CPU Name"
+              required
+            />
+            <input
+              type="number"
+              id="cpu-price"
+              class="form-control mb-2"
+              placeholder="CPU Price"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-microarchitecture"
+              class="form-control mb-2"
+              placeholder="CPU Micro Architecture"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-tpd"
+              class="form-control mb-2"
+              placeholder="CPU TPD"
+              required
+            />
+            <input
+              type="number"
+              id="cpu-core-count"
+              class="form-control mb-2"
+              placeholder="CPU Core"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-performance-core-clock"
+              class="form-control mb-2"
+              placeholder="CPU Performance Core Clock"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-description"
+              class="form-control mb-2"
+              placeholder="CPU Description"
+              required
+            />
+            <input
+              type="file"
+              id="cpu-image"
+              class="form-control mb-2"
+              placeholder="CPU Image URL"
+            />
+            <input
+              type="button"
+              class="btn btn-primary"
+              id="add-cpu-btn"
+              value="Add CPU"
+            />
+          </form>
+        </div>
+      </div>
+
+      <h2 class="text-info mt-3">CPU List</h2>
+      <ul class="list-group" id="cpu-list">
+        <!-- CPU list here -->
+      </ul>
+    </div>
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <script src="./src/js/firebase-config.js"></script>
+  <script src="./src/js/manage/manageCPU.js"></script>
+  <script>
+    loadCPU();
+  </script>
+</html>

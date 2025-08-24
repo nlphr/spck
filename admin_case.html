@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./src/css/admin.css" />
+  </head>
+  <body>
+    <div class="mt-4">
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add Case
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="case-form">
+            <input
+              type="text"
+              id="case-name"
+              class="form-control mb-2"
+              placeholder="Case Name"
+              required
+            />
+            <input
+              type="text"
+              id="case-title"
+              class="form-control mb-2"
+              placeholder="Case Title"
+              required
+            />
+            <input
+              type="number"
+              id="case-price"
+              class="form-control mb-2"
+              placeholder="Case Price"
+              required
+            />
+            <input
+              type="text"
+              id="case-color"
+              class="form-control mb-2"
+              placeholder="Case Color"
+              required
+            />
+            <input
+              type="text"
+              id="case-type"
+              class="form-control mb-2"
+              placeholder="Case Type"
+              required
+            />
+            <input
+              type="text"
+              id="case-side-panel"
+              class="form-control mb-2"
+              placeholder="Case Side Panel"
+              required
+            />
+            <input
+              type="text"
+              id="case-external-volume"
+              class="form-control mb-2"
+              placeholder="Case External Volume"
+              required
+            />
+            <input
+              type="text"
+              id="case-internal-35-bays"
+              class="form-control mb-2"
+              placeholder="Case Internal 3.5 Bays"
+              required
+            />
+            <input
+              type="text"
+              id="case-description"
+              class="form-control mb-2"
+              placeholder="Case Description"
+              required
+            />
+            <input type="file" id="case-image" class="form-control mb-2" />
+            <input
+              type="button"
+              class="btn btn-primary"
+              id="case-submit-btn"
+              value="Confirm"
+              onclick="addCase()"
+            />
+          </form>
+        </div>
+      </div>
+
+      <h2 class="text-info mt-3">Case List</h2>
+      <ul class="list-group" id="case-list">
+        <!-- Case list here -->
+      </ul>
+    </div>
+  </body>
+</html>

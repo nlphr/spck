@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, setDoc, doc } from "firebase/firestore";
-import { db } from "./firebase-config.js"; // Adjust the import path as necessary
+import { db } from "../firebase-config.js"; // Adjust the import path as necessary
 
 const storageData = [
   {

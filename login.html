@@ -25,27 +25,29 @@
       </div>
       <p id="login-message" class="text-success"></p>
       <button type="submit">Login</button>
+      <button type="button" id="google-login-button" class="btn btn-danger btn-block mt-3">Login with Google</button>
       <p class="switch-link">Don't have an account? <a href="register.html">Register</a></p>
     </form>
   </div>
   <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+
     // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyAWZWmD3CUwhlQ1rPC0zAYiFjW0jZX1lF8",
-      authDomain: "pcpart-service.firebaseapp.com",
-      projectId: "pcpart-service",
-      storageBucket: "pcpart-service.firebasestorage.app",
-      messagingSenderId: "607350512305",
-      appId: "1:607350512305:web:b47f26ccf3a405c3856090"
+      apiKey: "AIzaSyDS1MCjBzs084B_bS06NmTQtmhIboRqyFE",
+      authDomain: "proc-1-4e4bc.firebaseapp.com",
+      projectId: "proc-1-4e4bc",
+      storageBucket: "proc-1-4e4bc.firebasestorage.app",
+      messagingSenderId: "439851045486",
+      appId: "1:439851045486:web:9a7f678bd0f9d78467cc7f",
+      measurementId: "G-VET96KE21P"
     };
-  
+
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
   </script>
   <script type="module" src="src/js/login.js"></script>
   <script>

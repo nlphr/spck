@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./src/css/admin.css" />
+  </head>
+  <body>
+    <div class="mt-4">
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add CPU Cooler
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="cpu-cooler-form">
+            <input
+              type="text"
+              id="cpu-cooler-name"
+              class="form-control mb-2"
+              placeholder="CPU Cooler Name"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-cooler-title"
+              class="form-control mb-2"
+              placeholder="CPU Cooler Title"
+              required
+            />
+            <input
+              type="number"
+              id="cpu-cooler-price"
+              class="form-control mb-2"
+              placeholder="CPU Cooler Price"
+              required
+            />
+            <input
+              type="number"
+              id="cpu-cooler-fan-rpm"
+              class="form-control mb-2"
+              placeholder="CPU Cooler Fan RPM"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-cooler-noise-level"
+              class="form-control mb-2"
+              placeholder="CPU Cooler Noise Level"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-cooler-radiator-size"
+              class="form-control mb-2"
+              placeholder="CPU Radiator Size"
+              required
+            />
+            <input
+              type="text"
+              id="cpu-cooler-description"
+              class="form-control mb-2"
+              placeholder="CPU Cooler Description"
+              required
+            />
+            <input
+              type="file"
+              class="form-control mb-2"
+              id="cpu-cooler-image"
+            />
+            <input
+              type="button"
+              class="btn btn-primary"
+              id="cpu-cooler-submit-btn"
+              value="Confirm"
+              onclick="addCpuCooler()"
+            />
+          </form>
+        </div>
+      </div>
+
+      <h2 class="text-info mt-3">CPU Cooler List</h2>
+      <ul class="list-group" id="cpu-cooler-list">
+        <!-- CPU Cooler list here -->
+      </ul>
+    </div>
+  </body>
+</html>

@@ -3,11 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GPU Products - PCParts&Service</title>
+    <title>RAM Products - PCParts&Service</title>
     <link rel="stylesheet" href="./src/css/all.min.css" />
     <link rel="stylesheet" href="./src/css/navbar.css" />
     <link rel="stylesheet" href="./src/css/productCPU.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Navigation -->
@@ -60,10 +63,10 @@
       <div class="hero-content">
         <h1 class="hero-title">
           <span class="title-line">CHOOSE A</span>
-          <span class="title-line highlight">GPU</span>
+          <span class="title-line highlight">RAM</span>
         </h1>
         <p class="hero-subtitle">
-          Select the perfect graphics card for your build
+          Select the perfect memory sticks for your build
         </p>
       </div>
     </section>
@@ -79,7 +82,7 @@
               <h3 class="card-title">Part List</h3>
               <div class="compatibility-filter">
                 <label class="checkbox-label">
-                  <input type="checkbox" checked>
+                  <input type="checkbox" checked />
                   <span class="checkmark"></span>
                   Compatibility Filter
                 </label>
@@ -112,7 +115,7 @@
               <div class="pricing-options">
                 <h4>PRICING OPTIONS</h4>
                 <label class="checkbox-label">
-                  <input type="checkbox" checked>
+                  <input type="checkbox" checked />
                   <span class="checkmark"></span>
                   Include mail-in rebates
                 </label>
@@ -122,12 +125,19 @@
             <!-- Filters -->
             <div class="filter-card">
               <h3 class="card-title">Filters</h3>
-              
-               <!-- Price Range -->
-               <div class="filter-section">
+
+              <!-- Price Range -->
+              <div class="filter-section">
                 <h4>Price Range</h4>
                 <div class="price-slider">
-                  <input type="range" class="slider" id="priceSlider" min="0" max="5000" value="5000">
+                  <input
+                    type="range"
+                    class="slider"
+                    id="priceSlider"
+                    min="0"
+                    max="5000"
+                    value="5000"
+                  />
                   <div class="price-range">
                     <span>$0</span>
                     <span id="priceValue">$5000</span>
@@ -139,12 +149,12 @@
               <div class="filter-section">
                 <h4>RATING</h4>
                 <label class="checkbox-label">
-                  <input type="checkbox" checked>
+                  <input type="checkbox" checked />
                   <span class="checkmark"></span>
                   3 Stars & Up
                 </label>
                 <label class="checkbox-label">
-                  <input type="checkbox" checked>
+                  <input type="checkbox" checked />
                   <span class="checkmark"></span>
                   4 Stars & Up
                 </label>
@@ -166,7 +176,11 @@
               </div>
               <div class="header-right">
                 <div class="search-section">
-                  <input type="text" placeholder="Search GPUs..." class="search-input">
+                  <input
+                    type="text"
+                    placeholder="Search GPUs..."
+                    class="search-input"
+                  />
                   <span class="login-prompt">Log in to set price alerts.</span>
                 </div>
                 <button class="add-filter-btn">Add From Filter</button>
@@ -176,11 +190,15 @@
             <!-- Sorting -->
             <div class="sorting-section">
               <div class="sort-options">
-                <button class="sort-btn active" data-sort="recent">Recent</button>
+                <button class="sort-btn active" data-sort="recent">
+                  Recent
+                </button>
                 <button class="sort-btn" data-sort="price">Price</button>
                 <button class="sort-btn" data-sort="rating">Rating</button>
                 <button class="sort-btn" data-sort="memory">Memory</button>
-                <button class="sort-btn" data-sort="performance">Performance</button>
+                <button class="sort-btn" data-sort="performance">
+                  Performance
+                </button>
               </div>
             </div>
 
@@ -195,7 +213,7 @@
                 <div class="col-rating">Rating</div>
                 <div class="col-price">Price</div>
               </div>
-              
+
               <!-- Product List Container (Empty for JS population) -->
               <div class="product-list" id="gpu-product-list">
                 <!-- Products will be added here via JavaScript -->
@@ -213,7 +231,8 @@
           <div class="footer-section">
             <h3 class="footer-title">PCParts&Service</h3>
             <p class="footer-description">
-              Your ultimate destination for premium PC components and building expertise.
+              Your ultimate destination for premium PC components and building
+              expertise.
             </p>
           </div>
           <div class="footer-section">
@@ -253,59 +272,63 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script type="module" src="./src/js/firebase-config.js"></script>
-    
+    <script src="./src/js/firebase-config.js"></script>
+
     <!-- JavaScript for basic functionality -->
     <script>
       // Price slider functionality
-      const priceSlider = document.getElementById('priceSlider');
-      const priceValue = document.getElementById('priceValue');
-      
+      const priceSlider = document.getElementById("priceSlider");
+      const priceValue = document.getElementById("priceValue");
+
       if (priceSlider && priceValue) {
-        priceSlider.addEventListener('input', function() {
-          priceValue.textContent = '$' + this.value;
+        priceSlider.addEventListener("input", function () {
+          priceValue.textContent = "$" + this.value;
           // Add filter logic here
         });
       }
 
       // Sort button functionality
-      const sortButtons = document.querySelectorAll('.sort-btn');
-      sortButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-          sortButtons.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
+      const sortButtons = document.querySelectorAll(".sort-btn");
+      sortButtons.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          sortButtons.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
           // Add sorting logic here
         });
       });
 
       // Search functionality
-      const searchInput = document.querySelector('.search-input');
+      const searchInput = document.querySelector(".search-input");
       if (searchInput) {
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener("input", function () {
           // Add search logic here
         });
       }
 
       // Mobile navigation toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('.nav-menu');
+      const navToggle = document.querySelector(".nav-toggle");
+      const navMenu = document.querySelector(".nav-menu");
 
       if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-          navMenu.classList.toggle('active');
-          navToggle.classList.toggle('active');
+        navToggle.addEventListener("click", function () {
+          navMenu.classList.toggle("active");
+          navToggle.classList.toggle("active");
         });
       }
 
       // Navbar scroll effect
-      window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+          navbar.classList.add("scrolled");
         } else {
-          navbar.classList.remove('scrolled');
+          navbar.classList.remove("scrolled");
         }
       });
+    </script>
+    <script src="./src/js/displayGPU.js"></script>
+    <script>
+      displayGPU();
     </script>
   </body>
 </html>
