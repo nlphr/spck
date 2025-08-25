@@ -205,7 +205,7 @@ function editGPU(gpuId) {
         })
         .catch(function (error) {
           console.error("Error updating GPU:", error);
-          alert("Có lỗi khi cập nhật case, vui lòng thử lại!");
+          alert("Có lỗi khi cập nhật GPU, vui lòng thử lại!");
         });
     }
 
