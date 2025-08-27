@@ -206,7 +206,7 @@ function editCase(caseId) {
       internal35Bays: parseInt(caseInternal35Bays),
       externalVolume: caseExternalVolume,
       description: caseDescription,
-      rating: caseRating,
+      rating: parseFloat(caseRating) || 0,
     };
 
     // Hàm update vào Firestore

@@ -15,18 +15,110 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./src/css/admin.css" />
   </head>
   <body>
     <div class="mt-4">
-      <button class="btn btn-success">Add Storage</button>
-      <button class="btn btn-warning">Edit Storage</button>
-      <button class="btn btn-danger">Delete Storage</button>
+      <h2 class="text-info">Manage Storages</h2>
+      <a class="btn btn-info" type="button" href="./admin.html" onclick="location.href='./admin.html'">
+        Back to admin
+      </a>
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add Storage
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="storage-form">
+            <input
+              type="text"
+              id="storage-title"
+              class="form-control mb-2"
+              placeholder="Storage Title"
+              required
+            />
+            <input
+              type="text"
+              id="storage-name"
+              class="form-control mb-2"
+              placeholder="Storage Name"
+              required
+            />
+            <input
+              type="number"
+              id="storage-price"
+              class="form-control mb-2"
+              placeholder="Storage Price"
+              required
+            />
+            <input
+              type="text"
+              id="storage-type"
+              class="form-control mb-2"
+              placeholder="Storage Type"
+              required
+            />
+            <input
+              type="number"
+              id="storage-capacity"
+              class="form-control mb-2"
+              placeholder="Storage Capacity"
+              required
+            />
+
+            <input
+              type="text"
+              id="storage-form-factor"
+              class="form-control mb-2"
+              placeholder="Storage Form Factor"
+              required
+            />
+            <input
+              type="text"
+              id="storage-interface"
+              class="form-control mb-2"
+              placeholder="Storage Interface"
+              required
+            />
+            <textarea
+              id="storage-description"
+              class="form-control mb-2"
+              placeholder="Storage Description"
+              rows="3"
+            ></textarea>
+            <input
+              type="file"
+              id="storage-image"
+              class="form-control mb-2"
+              placeholder="Storage Image"
+              required
+            />
+            <button type="submit" class="btn btn-primary">Confirm</button>
+          </form>
+        </div>
+      </div>
 
       <h2 class="text-info mt-3">Storage List</h2>
-      <ul class="list-group">
+      <ul class="list-group" id="storage-list">
         <!-- Storage list here -->
       </ul>
     </div>
   </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <script src="./src/js/firebase-config.js"></script>
+  <script src="./src/js/manage/manageStorage.js"></script>
+  <script>
+    loadStorage();
+  </script>
 </html>

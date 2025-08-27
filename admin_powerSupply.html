@@ -15,18 +15,109 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./src/css/admin.css" />
   </head>
   <body>
     <div class="mt-4">
-      <button class="btn btn-success">Add Power Supply</button>
-      <button class="btn btn-warning">Edit Power Supply</button>
-      <button class="btn btn-danger">Delete Power Supply</button>
+      <h2 class="text-info">Manage Power Supplies</h2>
+      <a class="btn btn-info" type="button" href="./admin.html">
+        Back to admin
+      </a>
+      <button
+        class="btn btn-success"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add Power Supply
+      </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form id="power-supply-form">
+            <input
+              type="text"
+              id="power-supply-title"
+              class="form-control mb-2"
+              placeholder="Power Supply Title"
+              required
+            />
+            <input
+              type="text"
+              id="power-supply-name"
+              class="form-control mb-2"
+              placeholder="Power Supply Name"
+              required
+            />
+            <input
+              type="number"
+              id="power-supply-price"
+              class="form-control mb-2"
+              placeholder="Power Supply Price"
+              required
+            />
+            <input
+              type="text"
+              id="power-supply-type"
+              class="form-control mb-2"
+              placeholder="Power Supply Type"
+              required
+            />
+            <input
+              type="text"
+              id="power-supply-wattage"
+              class="form-control mb-2"
+              placeholder="Power Supply Wattage"
+              required
+            />
+            <input
+              type="text"
+              id="power-supply-efficiency"
+              class="form-control mb-2"
+              placeholder="Power Supply Efficiency"
+              required
+            />
+            <input
+              type="text"
+              id="power-supply-modular"
+              class="form-control mb-2"
+              placeholder="Power Supply Modular"
+              required
+            />
+            <textarea
+              id="power-supply-description"
+              class="form-control mb-2"
+              placeholder="Power Supply Description"
+              rows="3"
+            ></textarea>
+            <input
+              type="file"
+              id="power-supply-image"
+              class="form-control mb-2"
+              placeholder="Power Supply Image"
+              required
+            />
+            <button type="submit" class="btn btn-primary">Confirm</button>
+          </form>
+        </div>
+      </div>
 
       <h2 class="text-info mt-3">Power Supply List</h2>
-      <ul class="list-group">
-        <!-- Power Supply list here -->
+      <ul class="list-group" id="power-supply-list">
+        <!-- Power supply list here -->
       </ul>
     </div>
   </body>
+
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+  <script src="./src/js/firebase-config.js"></script>
+  <script src="./src/js/manage/managePowerSupply.js"></script>
+  <script>
+    loadPowerSupply();
+  </script>
 </html>
