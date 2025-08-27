@@ -176,7 +176,7 @@ function editGPU(gpuId) {
     const gpuDescription = document.getElementById(
       "edit-gpu-description"
     ).value;
-    const gpuRating = 0; // Default rating
+    const gpuRating = document.getElementById("edit-gpu-rating");
 
     let updateData = {
       title: gpuTitle,
@@ -186,7 +186,7 @@ function editGPU(gpuId) {
       memory: gpuMemory,
       coreClock: gpuCoreClock,
       description: gpuDescription,
-      rating: gpuRating,
+      rating: parseFloat(gpuRating) || 0,
     };
 
     // Hàm update vào Firestore

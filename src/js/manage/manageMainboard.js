@@ -62,7 +62,7 @@ function loadMainboard() {
                           <input type="text" id="edit-mainboard-cpu-socket" class="form-control mb-2" placeholder="CPU Socket" value="${mainboardData.cpuSocket}"/>
                           <textarea id="edit-mainboard-description" class="form-control mb-2" placeholder="Description" rows="3">${mainboardData.description}</textarea>
                           <input type="number" id="edit-mainboard-rating" class="form-control mb-2" placeholder="Rating" value="${mainboardData.rating}"/>
-                          <input type="file" id="edit-mainboard-image" class="form-control mb-2" placeholder="Image" value="${mainboardData.imageUrl}"/>
+                          <input type="file" id="edit-mainboard-image" class="form-control mb-2" placeholder="Image"/>
                           <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>
                       </div>
@@ -160,7 +160,7 @@ mainboardForm.addEventListener("submit", async (e) => {
 });
 
 function deleteMainboard(mainboardId) {
-  if (confirm("Are you sure you want to delete this GPU?")) {
+  if (confirm("Are you sure you want to delete this mainboard?")) {
     db.collection("mainboardData")
       .doc(mainboardId)
       .delete()
@@ -179,10 +179,15 @@ function editMainboard(mainboardId) {
 
   editForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    const mainboardTitle = document.getElementById("edit-mainboard-title").value;
+    const mainboardTitle = document.getElementById(
+      "edit-mainboard-title"
+    ).value;
     const mainboardName = document.getElementById("edit-mainboard-name").value;
-    const mainboardPrice = document.getElementById("edit-mainboard-price").value;
-    const mainboardImageFile = document.getElementById("edit-mainboard-image").files[0];
+    const mainboardPrice = document.getElementById(
+      "edit-mainboard-price"
+    ).value;
+    const mainboardImageFile = document.getElementById("edit-mainboard-image")
+      .files[0];
     const mainboardMemorySlots = document.getElementById(
       "edit-mainboard-memory-slots"
     ).value;
@@ -198,18 +203,20 @@ function editMainboard(mainboardId) {
     const mainboardDescription = document.getElementById(
       "edit-mainboard-description"
     ).value;
-    const mainboardRating = document.getElementById("edit-mainboard-rating").value; // Default rating
+    const mainboardRating = document.getElementById(
+      "edit-mainboard-rating"
+    ).value;
 
     let updateData = {
-          title: mainboardTitle,
-          name: mainboardName,
-          price: parseFloat(mainboardPrice),
-          memorySlots: mainboardMemorySlots,
-          memoryMax: mainboardMemoryMax,
-          formFactor: mainboardFormFactor,
-          cpuSocket: mainboardCPUSocket,
-          description: mainboardDescription,
-          rating: parseFloat(mainboardRating),
+      title: mainboardTitle,
+      name: mainboardName,
+      price: parseFloat(mainboardPrice),
+      memorySlots: mainboardMemorySlots,
+      memoryMax: mainboardMemoryMax,
+      formFactor: mainboardFormFactor,
+      cpuSocket: mainboardCPUSocket,
+      description: mainboardDescription,
+      rating: parseFloat(mainboardRating) || 0,
     };
 
     // Hàm update vào Firestore
