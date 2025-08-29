@@ -33,7 +33,7 @@ function loadRAM() {
         }).format(ramData.price);
 
         htmls += `
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li class="list-group-item d-flex justify-content-between align-items-center" data-price="${ramData.price}">
             <div class="row">
               <div class="col-md-2">
                   <img src="${ramData.imageUrl}" class="img-fluid">

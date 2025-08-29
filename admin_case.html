@@ -111,6 +111,31 @@
       </div>
 
       <h2 class="text-info mt-3">Case List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="case-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="case-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="case-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="case-list">
         <!-- Case list here -->
       </ul>
@@ -123,6 +148,19 @@
 
   <script src="./src/js/firebase-config.js"></script>
   <script src="./src/js/manage/manageCase.js"></script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#case-search",
+      list: "#case-list",
+      highlight: true,
+      price: {
+        minInput: "#case-min",
+        maxInput: "#case-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
+  </script>
   <script>
     loadCase();
   </script>

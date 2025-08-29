@@ -98,6 +98,31 @@
       </div>
 
       <h2 class="text-info mt-3">CPU List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="cpu-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="cpu-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="cpu-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="cpu-list">
         <!-- CPU list here -->
       </ul>
@@ -110,6 +135,19 @@
 
   <script src="./src/js/firebase-config.js"></script>
   <script src="./src/js/manage/manageCPU.js"></script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#cpu-search",
+      list: "#cpu-list",
+      highlight: true,
+      price: {
+        minInput: "#cpu-min",
+        maxInput: "#cpu-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
+  </script>
   <script>
     loadCPU();
   </script>

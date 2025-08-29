@@ -99,6 +99,31 @@
       </div>
 
       <h2 class="text-info mt-3">GPU List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="gpu-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="gpu-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="gpu-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="gpu-list">
         <!-- GPU list here -->
       </ul>
@@ -111,6 +136,19 @@
 
   <script src="./src/js/firebase-config.js"></script>
   <script src="./src/js/manage/manageGPU.js"></script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#gpu-search",
+      list: "#gpu-list",
+      highlight: true,
+      price: {
+        minInput: "#gpu-min",
+        maxInput: "#gpu-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
+  </script>
   <script>
     loadGPU();
   </script>

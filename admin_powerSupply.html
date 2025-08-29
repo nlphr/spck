@@ -105,6 +105,31 @@
       </div>
 
       <h2 class="text-info mt-3">Power Supply List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="power-supply-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="power-supply-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="power-supply-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="power-supply-list">
         <!-- Power supply list here -->
       </ul>
@@ -119,5 +144,18 @@
   <script src="./src/js/manage/managePowerSupply.js"></script>
   <script>
     loadPowerSupply();
+  </script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#power-supply-search",
+      list: "#power-supply-list",
+      highlight: true,
+      price: {
+        minInput: "#power-supply-min",
+        maxInput: "#power-supply-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
   </script>
 </html>

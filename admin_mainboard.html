@@ -105,6 +105,31 @@
       </div>
 
       <h2 class="text-info mt-3">Mainboard List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="mainboard-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="mainboard-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="mainboard-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="mainboard-list">
         <!-- Mainboard list here -->
       </ul>
@@ -117,6 +142,19 @@
 
   <script src="./src/js/firebase-config.js"></script>
   <script src="./src/js/manage/manageMainboard.js"></script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#mainboard-search",
+      list: "#mainboard-list",
+      highlight: true,
+      price: {
+        minInput: "#mainboard-min",
+        maxInput: "#mainboard-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
+  </script>
   <script>
     loadMainboard();
   </script>
