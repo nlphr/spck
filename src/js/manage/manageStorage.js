@@ -33,11 +33,7 @@ function loadStorage() {
         }).format(storageData.price);
 
         htmls += `
-<<<<<<< HEAD
           <li class="list-group-item d-flex justify-content-between align-items-center" data-price="${storageData.price}">
-=======
-          <li class="list-group-item d-flex justify-content-between align-items-center">
->>>>>>> 0451a24 (hoàn thành full CRUD admin)
             <div class="row">
               <div class="col-md-2">
                   <img src="${storageData.imageUrl}" class="img-fluid">
