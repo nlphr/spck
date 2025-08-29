@@ -96,6 +96,31 @@
       </div>
 
       <h2 class="text-info mt-3">CPU Cooler List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="cpu-cooler-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="cpu-cooler-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="cpu-cooler-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="cpu-cooler-list">
         <!-- CPU Cooler list here -->
       </ul>
@@ -110,5 +135,18 @@
   <script src="./src/js/manage/manageCPUCooler.js"></script>
   <script>
     loadCPUCooler();
+  </script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#cpu-cooler-search",
+      list: "#cpu-cooler-list",
+      highlight: true,
+      price: {
+        minInput: "#cpu-cooler-min",
+        maxInput: "#cpu-cooler-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
   </script>
 </html>

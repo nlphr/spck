@@ -33,7 +33,7 @@ function loadCase() {
         }).format(caseData.price);
 
         htmls += `
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li class="list-group-item d-flex justify-content-between align-items-center" data-price="${caseData.price}">
             <div class="row">
               <div class="col-md-2">
                   <img src="${caseData.imageUrl}" class="img-fluid">

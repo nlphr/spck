@@ -21,7 +21,12 @@
   <body>
     <div class="mt-4">
       <h2 class="text-info">Manage Storages</h2>
-      <a class="btn btn-info" type="button" href="./admin.html" onclick="location.href='./admin.html'">
+      <a
+        class="btn btn-info"
+        type="button"
+        href="./admin.html"
+        onclick="location.href='./admin.html'"
+      >
         Back to admin
       </a>
       <button
@@ -106,6 +111,31 @@
       </div>
 
       <h2 class="text-info mt-3">Storage List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="storage-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="storage-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="storage-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="storage-list">
         <!-- Storage list here -->
       </ul>
@@ -120,5 +150,18 @@
   <script src="./src/js/manage/manageStorage.js"></script>
   <script>
     loadStorage();
+  </script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#storage-search",
+      list: "#storage-list",
+      highlight: true,
+      price: {
+        minInput: "#storage-min",
+        maxInput: "#storage-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
   </script>
 </html>

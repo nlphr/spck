@@ -105,6 +105,31 @@
       </div>
 
       <h2 class="text-info mt-3">RAM List</h2>
+      <div class="row g-2 my-3">
+        <div class="col-md-6">
+          <input
+            id="ram-search"
+            class="form-control"
+            placeholder="Tìm theo tên, mô tả..."
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="ram-min"
+            type="number"
+            class="form-control"
+            placeholder="Giá từ"
+          />
+        </div>
+        <div class="col-md-2">
+          <input
+            id="ram-max"
+            type="number"
+            class="form-control"
+            placeholder="Giá đến"
+          />
+        </div>
+      </div>
       <ul class="list-group" id="ram-list">
         <!-- RAM list here -->
       </ul>
@@ -119,5 +144,18 @@
   <script src="./src/js/manage/manageRAM.js"></script>
   <script>
     loadRAM();
+  </script>
+  <script src="./src/js/searchEngine.js"></script>
+  <script>
+    searchEngine.attach({
+      input: "#ram-search",
+      list: "#ram-list",
+      highlight: true,
+      price: {
+        minInput: "#ram-min",
+        maxInput: "#ram-max",
+        getPrice: (el) => parseFloat(el.getAttribute("data-price")),
+      },
+    });
   </script>
 </html>

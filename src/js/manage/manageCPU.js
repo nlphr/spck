@@ -33,7 +33,7 @@ function loadCPU() {
         }).format(cpuData.price);
 
         htmls += `
-          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <li class="list-group-item d-flex justify-content-between align-items-center" data-price="${cpuData.price}">
             <div class="row">
               <div class="col-md-2">
                   <img src="${cpuData.imageUrl}" class="img-fluid">
