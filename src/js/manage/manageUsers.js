@@ -1,10 +1,10 @@
-import { auth, createUserWithEmailAndPassword } from "../firebase.js";
+import { auth, createUserWithEmailAndPassword, deleteUser } from "../firebase.js";
 
 const userListElement = document.getElementById("user-list");
 const newUserEmailInput = document.getElementById("new-user-email");
 const newUserPasswordInput = document.getElementById("new-user-password");
 const createUserBtn = document.getElementById("create-user-btn");
-const deleteUserEmailInput = document.getElementById("delete-user-email");
+const deleteUserUidInput = document.getElementById("delete-user-uid");
 const confirmDeleteUserBtn = document.getElementById("confirm-delete-user-btn");
 
 // Function to fetch and display users (client-side simulation, ideally from backend)
@@ -16,8 +16,8 @@ async function fetchAndDisplayUsers() {
 
   // Simulate fetching data (replace with actual backend call)
   const simulatedUsers = [
-    { email: "user1@example.com" },
-    { email: "user2@example.com" },
+    { uid: "uid123", email: "user1@example.com" },
+    { uid: "uid456", email: "user2@example.com" },
   ];
 
   setTimeout(() => {
@@ -28,7 +28,7 @@ async function fetchAndDisplayUsers() {
       simulatedUsers.forEach((user) => {
         const listItem = document.createElement("li");
         listItem.className = "list-group-item";
-        listItem.textContent = `Email: ${user.email}`;
+        listItem.textContent = `Email: ${user.email} (UID: ${user.uid})`;
         userListElement.appendChild(listItem);
       });
     }
@@ -44,7 +44,7 @@ createUserBtn.addEventListener("click", async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log("User added successfully:", userCredential.user);
-      alert(`User ${email} added successfully!`);
+      alert(`User ${email} added successfully! UID: ${userCredential.user.uid}`);
       newUserEmailInput.value = "";
       newUserPasswordInput.value = "";
       fetchAndDisplayUsers(); // Refresh the list
@@ -59,18 +59,18 @@ createUserBtn.addEventListener("click", async () => {
 
 // Function to delete a user (client-side simulation, ideally from backend)
 confirmDeleteUserBtn.addEventListener("click", async () => {
-  const emailToDelete = deleteUserEmailInput.value;
+  const uidToDelete = deleteUserUidInput.value;
 
-  if (emailToDelete) {
-    // In a real application, you would send this email to your backend
+  if (uidToDelete) {
+    // In a real application, you would send this UID to your backend
     // which uses Firebase Admin SDK to delete the user.
     // For this client-side example, we'll just simulate it.
-    console.log(`Attempting to delete user with email: ${emailToDelete}`);
-    alert(`User deletion for ${emailToDelete} simulated. (Requires backend for actual deletion)`);
-    deleteUserEmailInput.value = "";
+    console.log(`Attempting to delete user with UID: ${uidToDelete}`);
+    alert(`User deletion for UID: ${uidToDelete} simulated. (Requires backend for actual deletion)`);
+    deleteUserUidInput.value = "";
     fetchAndDisplayUsers(); // Refresh the list
   } else {
-    alert("Please enter the email of the user to delete.");
+    alert("Please enter the UID of the user to delete.");
   }
 });
 
