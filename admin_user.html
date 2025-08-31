@@ -19,15 +19,27 @@
   </head>
   <body>
     <div class="mt-4">
-      <button class="btn btn-success">Add New User</button>
+      <button class="btn btn-success" id="add-user-btn">Add New User</button>
       <button class="btn btn-warning">Edit Settings</button>
-      <button class="btn btn-danger">Delete User</button>
+      <button class="btn btn-danger" id="delete-user-btn">Delete User</button>
     </div>
     <div class="mt-4">
       <h2 class="text-info">User List</h2>
-      <ul class="list-group">
+      <ul class="list-group" id="user-list">
         <!-- User list here -->
       </ul>
     </div>
+    <div class="mt-4">
+      <h3>Add New User</h3>
+      <input type="email" id="new-user-email" placeholder="Email" class="form-control mb-2" />
+      <input type="password" id="new-user-password" placeholder="Password" class="form-control mb-2" />
+      <button class="btn btn-primary" id="create-user-btn">Create User</button>
+    </div>
+    <div class="mt-4">
+      <h3>Delete User</h3>
+      <input type="email" id="delete-user-email" placeholder="Email to delete" class="form-control mb-2" />
+      <button class="btn btn-danger" id="confirm-delete-user-btn">Confirm Delete</button>
+    </div>
+    <script type="module" src="./src/js/manage/manageUsers.js"></script>
   </body>
 </html>
