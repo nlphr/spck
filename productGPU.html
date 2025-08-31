@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RAM Products - PCParts&Service</title>
+    <title>GPU Products - PCParts&Service</title>
     <link rel="stylesheet" href="./src/css/all.min.css" />
     <link rel="stylesheet" href="./src/css/navbar.css" />
     <link rel="stylesheet" href="./src/css/productCPU.css" />
@@ -63,10 +63,10 @@
       <div class="hero-content">
         <h1 class="hero-title">
           <span class="title-line">CHOOSE A</span>
-          <span class="title-line highlight">RAM</span>
+          <span class="title-line highlight">GPU</span>
         </h1>
         <p class="hero-subtitle">
-          Select the perfect memory sticks for your build
+          Select the perfect graphics card for your build
         </p>
       </div>
     </section>
@@ -196,6 +196,7 @@
                 <button class="sort-btn" data-sort="price">Price</button>
                 <button class="sort-btn" data-sort="rating">Rating</button>
                 <button class="sort-btn" data-sort="memory">Memory</button>
+                <button class="sort-btn" data-sort="core-clock">Core Clock</button>
                 <button class="sort-btn" data-sort="performance">
                   Performance
                 </button>
@@ -205,11 +206,12 @@
             <!-- Product Table -->
             <div class="product-table">
               <div class="table-header">
+                <div class="col-image">Picture</div>
                 <div class="col-name">Name</div>
+                <div class="col-chipset">Chipset</div>
                 <div class="col-memory">Memory</div>
                 <div class="col-clock">Core Clock</div>
-                <div class="col-arch">Architecture</div>
-                <div class="col-tdp">TDP</div>
+                <div class="col-length">Length</div>
                 <div class="col-rating">Rating</div>
                 <div class="col-price">Price</div>
               </div>
@@ -326,7 +328,7 @@
         }
       });
     </script>
-    <script src="./src/js/displayGPU.js"></script>
+    <script src="./src/js/displayData/displayGPU.js"></script>
     <script>
       displayGPU();
     </script>
