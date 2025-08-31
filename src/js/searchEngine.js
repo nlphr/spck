@@ -1,6 +1,6 @@
 /**
  * Cách dùng:
- * 1. Thêm file này vào cuối trang: <script src="./src/js/simple-search.js"></script>
+ * 1. Thêm file này vào cuối trang: <script src="./src/js/searchEngine.js"></script>
  * 2. Thêm ô input để tìm kiếm (id="...-search") và ô nhập giá (id="...-min", id="...-max")
  * 3. Gọi SimpleSearch.attach({...}) để gắn chức năng tìm kiếm
  * !!--- CHỈ DÙNG CHO ADMIN ---!!
