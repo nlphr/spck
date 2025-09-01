@@ -104,6 +104,12 @@
             placeholder="Tìm theo tên, mô tả..."
           />
         </div>
+        <button
+          id="voice-btn"
+          type="button"
+          class="btn btn-outline-secondary ms-2"
+          data-feather="mic"
+        ></button>
         <div class="col-md-2">
           <input
             id="cpu-cooler-min"
@@ -137,6 +143,14 @@
     loadCPUCooler();
   </script>
   <script src="./src/js/searchEngine.js"></script>
+  <script src="./src/js/voiceSearch.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    feather.replace();
+  </script>
+  <script>
+    voiceSearch(document.getElementById("cpu-cooler-search"));
+  </script>
   <script>
     searchEngine.attach({
       input: "#cpu-cooler-search",
