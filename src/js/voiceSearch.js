@@ -20,19 +20,19 @@ function voiceSearch(searchInput) {
         if (!isListening) {
           recognition.start();
           isListening = true;
-          voiceBtn.textContent = "🎙️ Đang nghe (nhấn để dừng)";
-          console.log("🔊 Voice search: bắt đầu nghe...");
+          voiceBtn.setAttribute("data-feather", "mic-off");
+          console.log("Voice search: bắt đầu nghe...");
         } else {
           recognition.stop();
           isListening = false;
-          voiceBtn.textContent = "🎤";
-          console.log("⏹️ Voice search: đã dừng nghe (người dùng nhấn nút).");
+          voiceBtn.setAttribute("data-feather", "mic");
+          console.log("Voice search: đã dừng nghe (người dùng nhấn nút).");
         }
       });
 
       recognition.addEventListener("result", (event) => {
         const transcript = event.results[0][0].transcript;
-        console.log("✅ Nhận dạng:", transcript);
+        console.log("Nhận dạng:", transcript);
         searchInput.value = transcript;
         searchInput.dispatchEvent(new Event("input"));
       });
@@ -42,17 +42,18 @@ function voiceSearch(searchInput) {
           // Nếu API tự end (không phải do người dùng nhấn nút), restart
           recognition.start();
         } else {
-          voiceBtn.textContent = "🎤";
+          voiceBtn.setAttribute("data-feather", "mic");
         }
       });
 
       recognition.addEventListener("error", (e) => {
-        console.error("❌ Lỗi voice search:", e.error);
+        console.error("Lỗi voice search:", e.error);
         isListening = false;
-        voiceBtn.textContent = "🎤";
+        voiceBtn.setAttribute("data-feather", "mic");
+        alert("Có lỗi xảy ra với voice search: " + e.error);
       });
     } else {
-      console.warn("⚠️ Trình duyệt không hỗ trợ Web Speech API");
+      console.warn("Trình duyệt không hỗ trợ Web Speech API");
     }
   });
 }
