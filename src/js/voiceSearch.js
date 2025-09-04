@@ -10,7 +10,7 @@ function voiceSearch(searchInput) {
         window.SpeechRecognition || window.webkitSpeechRecognition;
       const recognition = new SpeechRecognition();
 
-      recognition.lang = "vi-VN"; 
+      recognition.lang = "vi-VN";
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
 
@@ -20,12 +20,12 @@ function voiceSearch(searchInput) {
         if (!isListening) {
           recognition.start();
           isListening = true;
-          voiceBtn.setAttribute("data-feather", "mic-off");
+          voiceBtn.innerHTML = feather.icons["mic-off"].toSvg();
           console.log("Voice search: bắt đầu nghe...");
         } else {
           recognition.stop();
           isListening = false;
-          voiceBtn.setAttribute("data-feather", "mic");
+          voiceBtn.innerHTML = feather.icons["mic"].toSvg();
           console.log("Voice search: đã dừng nghe (người dùng nhấn nút).");
         }
       });
@@ -41,16 +41,17 @@ function voiceSearch(searchInput) {
         if (isListening) {
           // Nếu API tự end (không phải do người dùng nhấn nút), restart
           recognition.start();
+          console.log("Voice search: tự động restart sau khi kết thúc.");
         } else {
-          voiceBtn.setAttribute("data-feather", "mic");
+          console.log("Voice search: đã dừng nghe.");
         }
+        voiceBtn.innerHTML = feather.icons["mic"].toSvg();
       });
 
       recognition.addEventListener("error", (e) => {
         console.error("Lỗi voice search:", e.error);
         isListening = false;
-        voiceBtn.setAttribute("data-feather", "mic");
-        alert("Có lỗi xảy ra với voice search: " + e.error);
+        voiceBtn.innerHTML = feather.icons["mic"].toSvg();
       });
     } else {
       console.warn("Trình duyệt không hỗ trợ Web Speech API");
