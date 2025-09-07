@@ -25,7 +25,7 @@ function renderCPUCoolers(coolers) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=cpucooler&id=${coolerData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -36,7 +36,7 @@ function renderCPUCoolers(coolers) {
 function displayCPUCooler() {
   db.collection("cpuCoolerData").get().then((querySnapshot) => {
     allCPUCoolers = [];
-    querySnapshot.forEach((doc) => allCPUCoolers.push(doc.data()));
+    querySnapshot.forEach((doc) => allCPUCoolers.push({ id: doc.id, ...doc.data() }));
     renderCPUCoolers(allCPUCoolers);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching CPU Cooler data: ${error.message}</p></div>`;

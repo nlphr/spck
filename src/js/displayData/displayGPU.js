@@ -25,7 +25,7 @@ function renderGPUs(gpus) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=gpu&id=${gpuData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -36,7 +36,7 @@ function renderGPUs(gpus) {
 function displayGPU() {
   db.collection("gpuData").get().then((querySnapshot) => {
     allGPUs = [];
-    querySnapshot.forEach((doc) => allGPUs.push(doc.data()));
+    querySnapshot.forEach((doc) => allGPUs.push({ id: doc.id, ...doc.data() }));
     renderGPUs(allGPUs);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching GPU data: ${error.message}</p></div>`;

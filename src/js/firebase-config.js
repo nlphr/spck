@@ -11,7 +11,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
-const auth = firebase.auth();
+// Check if auth is available before initializing
+let auth = null;
+if (firebase.auth) {
+  auth = firebase.auth();
+}
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = firebase.firestore();

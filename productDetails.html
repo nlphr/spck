@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details - PCParts&Service</title>
+    <link rel="stylesheet" href="./src/css/all.min.css" />
+    <link rel="stylesheet" href="./src/css/navbar.css" />
+    <link rel="stylesheet" href="./src/css/productDetails.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">PCParts&Service</span>
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="builder.html" class="nav-link">Builder</a>
+          </li>
+          <li class="nav-item">
+            <a href="products.html" class="nav-link">Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="guides.html" class="nav-link">Guides</a>
+          </li>
+          <li class="nav-item">
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="support.html" class="nav-link">Support</a>
+          </li>
+        </ul>
+        <div class="nav-extras">
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="register.html" class="nav-link">Register</a>
+          <a href="settings.html" class="nav-link">Settings</a>
+        </div>
+        <div class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="main-content">
+      <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="separator">/</span>
+          <a href="products.html">Products</a>
+          <span class="separator">/</span>
+          <span id="component-type">Component</span>
+          <span class="separator">/</span>
+          <span id="product-name">Product Name</span>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details">
+          <!-- Product Images -->
+          <div class="product-images">
+            <div class="main-image">
+              <img id="main-product-image" src="" alt="Product Image">
+            </div>
+            <div class="image-gallery" id="image-gallery">
+              <!-- Additional images will be added here -->
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <div class="product-header">
+              <h1 id="product-title">Product Title</h1>
+              <div class="product-rating">
+                <div class="stars" id="product-stars">★★★★☆</div>
+                <span class="rating-text" id="rating-text">4.0/5</span>
+                <span class="review-count">(150 reviews)</span>
+              </div>
+            </div>
+
+            <div class="product-price">
+              <span class="current-price" id="current-price">$299.99</span>
+              <span class="original-price" id="original-price">$399.99</span>
+              <span class="discount" id="discount">25% OFF</span>
+            </div>
+
+            <div class="product-description" id="product-description">
+              <p>High-performance component designed for optimal performance and reliability.</p>
+            </div>
+
+            <!-- Key Specifications -->
+            <div class="key-specs">
+              <h3>Key Specifications</h3>
+              <div class="specs-grid" id="key-specs-grid">
+                <!-- Specifications will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <!-- Buy Section -->
+            <div class="buy-section">
+              <div class="quantity-selector">
+                <label for="quantity">Quantity:</label>
+                <div class="quantity-controls">
+                  <button class="qty-btn" onclick="changeQuantity(-1)">-</button>
+                  <input type="number" id="quantity" value="1" min="1" max="10">
+                  <button class="qty-btn" onclick="changeQuantity(1)">+</button>
+                </div>
+              </div>
+
+              <div class="total-price">
+                <span>Total: </span>
+                <span id="total-price">$299.99</span>
+              </div>
+
+              <button class="buy-now-btn" onclick="showPaymentForm()">
+                <i class="fas fa-shopping-cart"></i>
+                Buy Now
+              </button>
+
+              <button class="add-to-cart-btn" onclick="addToCart()">
+                <i class="fas fa-plus"></i>
+                Add to Cart
+              </button>
+            </div>
+
+            <!-- Stock Status -->
+            <div class="stock-status">
+              <span class="status-indicator in-stock">
+                <i class="fas fa-check-circle"></i>
+                In Stock
+              </span>
+              <span class="delivery-info">Free shipping on orders over $50</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Specifications -->
+        <div class="detailed-specs">
+          <h2>Detailed Specifications</h2>
+          <div class="specs-container" id="detailed-specs-container">
+            <!-- Detailed specifications will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section">
+          <h2>Reviews</h2>
+          <div class="reviews-container" id="reviews-container">
+            <!-- Reviews will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Complete Your Purchase</h2>
+          <span class="close" onclick="closePaymentForm()">&times;</span>
+        </div>
+        
+        <div class="modal-body">
+          <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="order-item">
+              <img id="modal-product-image" src="" alt="Product">
+              <div class="item-details">
+                <h4 id="modal-product-title">Product Title</h4>
+                <p id="modal-product-specs">Specifications</p>
+                <div class="item-price">
+                  <span id="modal-unit-price">$299.99</span>
+                  <span class="quantity">x <span id="modal-quantity">1</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="order-total">
+              <span>Total:</span>
+              <span id="modal-total-price">$299.99</span>
+            </div>
+          </div>
+
+          <form id="payment-form" class="payment-form">
+            <div class="form-section">
+              <h3>Shipping Information</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input type="text" id="state" required>
+                </div>
+                <div class="form-group">
+                  <label for="zipCode">ZIP Code</label>
+                  <input type="text" id="zipCode" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Payment Information</h3>
+              <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiryDate">Expiry Date</label>
+                  <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" placeholder="123" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cardName">Name on Card</label>
+                <input type="text" id="cardName" required>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="cancel-btn" onclick="closePaymentForm()">Cancel</button>
+              <button type="submit" class="confirm-purchase-btn">
+                <i class="fas fa-lock"></i>
+                Confirm Purchase
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3 class="footer-title">PCParts&Service</h3>
+            <p class="footer-description">
+              Your ultimate destination for premium PC components and building
+              expertise.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="marketplace.html">Marketplace</a></li>
+              <li><a href="#">Build Guide</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4 class="footer-subtitle">Categories</h4>
+            <ul class="footer-links">
+              <li><a href="productCPU.html">CPUs</a></li>
+              <li><a href="productGPU.html">GPUs</a></li>
+              <li><a href="productMainBoard.html">Motherboards</a></li>
+              <li><a href="productRAM.html">RAM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 PCParts&Service. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+    <!-- Firebase Auth -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+      integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./src/js/firebase-config.js"></script>
+    <script src="./src/js/productDetails.js"></script>
+  </body>
+</html>
