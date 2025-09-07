@@ -1,6 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
 import { firebaseConfig } from "./firebase-config.js";
 
@@ -18,19 +24,19 @@ const auth = getAuth(app);
 function signInUser(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in 
+      // Signed in
       const user = userCredential.user;
-      console.log('User signed in:', user);
+      console.log("User signed in:", user);
       return user; // Return user credential for chaining
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.error('Error signing in:', errorCode, errorMessage);
+      console.error("Error signing in:", errorCode, errorMessage);
       throw error; // Re-throw the error for the calling function to catch
     });
 }
- 
+
 // Function to sign in with Google
 function signInWithGoogle() {
   const provider = new GoogleAuthProvider();
@@ -41,11 +47,12 @@ function signInWithGoogle() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      console.log('Google user signed in:', user);
+      console.log("Google user signed in:", user);
       return user; // Return user credential for chaining
       // IdP data available in result.additionalUserInfo.profile
       // ...
-    }).catch((error) => {
+    })
+    .catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -53,10 +60,16 @@ function signInWithGoogle() {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-      console.error('Error with Google sign-in:', errorCode, errorMessage);
+      console.error("Error with Google sign-in:", errorCode, errorMessage);
       throw error; // Re-throw the error for the calling function to catch
       // ...
     });
 }
 
-export { signInUser, signInWithGoogle, createUserWithEmailAndPassword, auth, analytics }; 
+export {
+  signInUser,
+  signInWithGoogle,
+  createUserWithEmailAndPassword,
+  auth,
+  analytics,
+};
