@@ -228,6 +228,7 @@ h2::after {
 /* ===== ADMIN LISTS ===== */
 .list-group {
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-bottom: 20px;
   border: 5px solid #000000;
 }
@@ -239,6 +240,8 @@ h2::after {
   scale: 1.5;
 }
 =======
+=======
+>>>>>>> 65eb5fcb173cbb2e1c04fcfdb9ef3572f9576954
   margin-bottom: var(--spacing-xl);
   border: 2px solid var(--tertiary-black);
   border-radius: var(--radius-lg);
@@ -379,5 +382,9 @@ h2::after {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-purple);
+<<<<<<< HEAD
 }
 >>>>>>> 65eb5fc (Update_css_admin)
+=======
+}
+>>>>>>> 65eb5fcb173cbb2e1c04fcfdb9ef3572f9576954

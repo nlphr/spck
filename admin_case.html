@@ -19,6 +19,10 @@
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/css/admin.css" />
   </head>
   <body>
@@ -39,21 +43,23 @@
           Add Case
         </button>
       </div>
-    <div class="mt-4">
-      <h2 class="text-info">Manage Cases</h2>
-      <a class="btn btn-info" type="button" href="./admin.html">
-        Back to admin
-      </a>
-      <button
-        class="btn btn-success"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseExample"
-        aria-expanded="false"
-        aria-controls="collapseExample"
-      >
-        Add Case
-      </button>
+    <div class="admin-container">
+      <h2>Manage Cases</h2>
+      <div class="admin-actions">
+        <a class="btn btn-info" type="button" href="./admin.html">
+          Back to admin
+        </a>
+        <button
+          class="btn btn-success"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          Add Case
+        </button>
+      </div>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
           <form id="case-form">
@@ -173,6 +179,7 @@
   </body>
 
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
