@@ -1,5 +1,6 @@
 // Import the necessary Firebase Authentication functions
 import { createUserWithEmailAndPassword, auth } from "./firebase.js";
+import { createUserWithEmailAndPassword, auth } from "./firebase.js";
 
 // Add an event listener to the registration form
 document
