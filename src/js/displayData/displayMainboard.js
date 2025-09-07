@@ -25,7 +25,7 @@ function renderMainboards(mainboards) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=mainboard&id=${mainboardData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -36,7 +36,7 @@ function renderMainboards(mainboards) {
 function displayMainboard() {
   db.collection("mainboardData").get().then((querySnapshot) => {
     allMainboards = [];
-    querySnapshot.forEach((doc) => allMainboards.push(doc.data()));
+    querySnapshot.forEach((doc) => allMainboards.push({ id: doc.id, ...doc.data() }));
     renderMainboards(allMainboards);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching Mainboard data: ${error.message}</p></div>`;

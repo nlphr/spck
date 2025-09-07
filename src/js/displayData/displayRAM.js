@@ -26,7 +26,7 @@ function renderRAM(ramItems) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=ram&id=${ramData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -37,7 +37,7 @@ function renderRAM(ramItems) {
 function displayRAM() {
   db.collection("ramData").get().then((querySnapshot) => {
     allRAM = [];
-    querySnapshot.forEach((doc) => allRAM.push(doc.data()));
+    querySnapshot.forEach((doc) => allRAM.push({ id: doc.id, ...doc.data() }));
     renderRAM(allRAM);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching RAM data: ${error.message}</p></div>`;

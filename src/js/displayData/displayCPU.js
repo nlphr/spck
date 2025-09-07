@@ -25,7 +25,7 @@ function renderCPUs(cpus) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=cpu&id=${cpuData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -36,7 +36,7 @@ function renderCPUs(cpus) {
 function displayCPU() {
   db.collection("cpuData").get().then((querySnapshot) => {
     allCPUs = [];
-    querySnapshot.forEach((doc) => allCPUs.push(doc.data()));
+    querySnapshot.forEach((doc) => allCPUs.push({ id: doc.id, ...doc.data() }));
     renderCPUs(allCPUs);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching CPU data: ${error.message}</p></div>`;

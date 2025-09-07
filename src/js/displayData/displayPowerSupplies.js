@@ -26,7 +26,7 @@ function renderPowerSupplies(psus) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=power&id=${psuData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -37,7 +37,7 @@ function renderPowerSupplies(psus) {
 function displayPowerSupplies() {
   db.collection("powerSupplyData").get().then((querySnapshot) => {
     allPowerSupplies = [];
-    querySnapshot.forEach((doc) => allPowerSupplies.push(doc.data()));
+    querySnapshot.forEach((doc) => allPowerSupplies.push({ id: doc.id, ...doc.data() }));
     renderPowerSupplies(allPowerSupplies);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching Power Supply data: ${error.message}</p></div>`;

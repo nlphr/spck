@@ -25,7 +25,7 @@ function renderCases(cases) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=case&id=${caseData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -36,7 +36,7 @@ function renderCases(cases) {
 function displayCase() {
   db.collection("caseData").get().then((querySnapshot) => {
     allCases = [];
-    querySnapshot.forEach((doc) => allCases.push(doc.data()));
+    querySnapshot.forEach((doc) => allCases.push({ id: doc.id, ...doc.data() }));
     renderCases(allCases);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching Case data: ${error.message}</p></div>`;

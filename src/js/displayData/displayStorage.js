@@ -25,7 +25,7 @@ function renderStorage(storageItems) {
         </div>
         <div class="col-price">
           <span class="price-value">${formattedPrice}</span>
-          <button class="add-to-cart-btn">Buy</button>
+          <button class="add-to-cart-btn" onclick="window.location.href='productDetails.html?type=storage&id=${storageData.id}'">Buy</button>
         </div>
       </div>
     `;
@@ -36,7 +36,7 @@ function renderStorage(storageItems) {
 function displayStorage() {
   db.collection("storageData").get().then((querySnapshot) => {
     allStorage = [];
-    querySnapshot.forEach((doc) => allStorage.push(doc.data()));
+    querySnapshot.forEach((doc) => allStorage.push({ id: doc.id, ...doc.data() }));
     renderStorage(allStorage);
   }).catch((error) => {
     product_list.innerHTML = `<div class="error-message"><p>Error fetching Storage data: ${error.message}</p></div>`;
