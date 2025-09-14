@@ -123,14 +123,14 @@
             <div class="filter-card">
               <h3 class="card-title">Filters</h3>
               
-              <!-- Price Range -->
+              <!-- Price Filter -->
               <div class="filter-section">
-                <h4>Price Range</h4>
+                <h4>PRICE</h4>
                 <div class="price-slider">
-                  <input type="range" class="slider" id="priceSlider" min="0" max="5000" value="5000">
+                  <input type="range" min="0" max="2699" value="2699" class="slider" placeholder="Price Range">
                   <div class="price-range">
                     <span>$0</span>
-                    <span id="priceValue">$5000</span>
+                    <span>$2699</span>
                   </div>
                 </div>
               </div>
@@ -254,63 +254,7 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="./src/js/firebase-config.js"></script>
-    <script src="./src/js/displayCPU.js"></script>
-
-    <!-- JavaScript for basic functionality -->
-    <script>
-      // Price slider functionality
-      const priceSlider = document.getElementById('priceSlider');
-      const priceValue = document.getElementById('priceValue');
-      
-      if (priceSlider && priceValue) {
-        priceSlider.addEventListener('input', function() {
-          priceValue.textContent = '$' + this.value;
-          // Add filter logic here
-        });
-      }
-
-      // Sort button functionality
-      const sortButtons = document.querySelectorAll('.sort-btn');
-      sortButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-          sortButtons.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          // Add sorting logic here
-        });
-      });
-
-      // Search functionality
-      const searchInput = document.querySelector('.search-input');
-      if (searchInput) {
-        searchInput.addEventListener('input', function() {
-          // Add search logic here
-        });
-      }
-
-      // Mobile navigation toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('.nav-menu');
-
-      if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-          navMenu.classList.toggle('active');
-          navToggle.classList.toggle('active');
-        });
-      }
-
-      // Navbar scroll effect
-      window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      });
-    </script>
     <script src="./src/js/displayData/displayCPU.js"></script>
-    <script>
-      displayCPU();
-    </script>
+    <script>displayCPU();</script>
   </body>
 </html>
