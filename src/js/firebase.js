@@ -21,11 +21,9 @@ const functions = getFunctions(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
-const auth = getAuth(app);
 
 // Example function to sign in a user
 function signInUser(email, password) {
-  return signInWithEmailAndPassword(auth, email, password)
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
@@ -44,7 +42,6 @@ function signInUser(email, password) {
 // Function to sign in with Google
 function signInWithGoogle() {
   const provider = new GoogleAuthProvider();
-  return signInWithPopup(auth, provider)
   return signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
