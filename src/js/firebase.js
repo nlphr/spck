@@ -9,7 +9,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
 import { getFunctions } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-functions.js";
-import { firebaseConfig } from "./firebase-config.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
